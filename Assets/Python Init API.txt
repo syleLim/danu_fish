@@ -1,0 +1,2204 @@
+===============================
+  
+import sys
+import os
+sys.path.append("D:/Frontline/bin/enginedata/python")
+currdir = os.getcwd()
+os.chdir("D:/Frontline/bin/enginedata/python")
+ 
+===============================
+  
+import sys
+import Debugger
+import Math3d
+import Actor
+import BoundingBoxMath
+import BoundingBox2DMath
+import FileIO
+import DeviceInput
+
+
+Debugger.Log('Debugger is OK outside debugger\n')
+
+ 
+Extending Function EngineDebugger.MsgBox Registered
+Extending Function EngineDebugger.Log Registered
+Extending Function EngineDebugger.EvaluateReturn_float Registered
+Extending Function EngineDebugger.EvaluateReturn_double Registered
+Extending Function EngineDebugger.EvaluateReturn_int Registered
+Extending Function EngineDebugger.EvaluateReturn_String Registered
+Extending Function EngineDebugger.EvaluateReturn_Color Registered
+Extending Function EngineDebugger.EvaluateReturn_Vector2 Registered
+Extending Function EngineDebugger.EvaluateReturn_Vector3 Registered
+Extending Function EngineDebugger.EvaluateReturn_Vector4 Registered
+Extending Function EngineDebugger.EvaluateReturn_Quaternion Registered
+Extending Function EngineDebugger.EvaluateReturn_Matrix Registered
+Extending Function EngineDebugger.EvaluateReturn_bool Registered
+Extending Function EngineDebugger.EvaluateReturn_UID Registered
+Debugger is OK inside debugger
+Extending Function EngineDeviceInput.GetHMDOrientation Registered
+Extending Function EngineDeviceInput.GetHMDPosition Registered
+Extending Function EngineDeviceInput.GetHMDStatus Registered
+Extending Function EngineDeviceInput.GetHandOrientation Registered
+Extending Function EngineDeviceInput.GetHandPosition Registered
+Extending Function EngineDeviceInput.GetHandStatus Registered
+Extending Function EngineDeviceInput.GetInputTime Registered
+Extending Function EngineDeviceInput.GetInputInfo Registered
+Extending Function EngineDeviceInput.GetControllerType Registered
+Extending Function EngineDeviceInput.GetTrigger Registered
+Extending Function EngineDeviceInput.GetThumbStick Registered
+Extending Function EngineDeviceInput.SetVibration Registered
+Debugger is OK outside debugger
+===============================
+  
+os.chdir(currdir)
+ 
+===============================
+  
+evaluate = Math3d.Vector4(1,2,3,4)
+Debugger.EvaluateReturn_Vector4(str(evaluate))
+ 
+===============================
+  
+class PropertyGroup :
+    def __init__(self, componentBase):
+        self.ComponentBase = componentBase
+ 
+===============================
+  
+import EngineComponentBase
+class ComponentBase :
+    def __init__(self,uid):
+        if type(uid) is int:
+            self.UID = uid
+        else:
+            self.UID = uid.UID
+    def KindOf(self, arg1):
+        return EngineComponentBase.KindOf(self.UID , arg1)
+    def TimedMessage(self, arg1, arg2, arg3, arg4, arg5):
+        return EngineComponentBase.TimedMessage(self.UID , arg1, arg2, arg3, str(arg4), str(arg5))
+    def PeriodicMessage(self, arg1, arg2, arg3, arg4, arg5, arg6):
+        return EngineComponentBase.PeriodicMessage(self.UID , arg1, arg2, arg3, arg4, str(arg5), str(arg6))
+    def SetProperty(self, propGroup, groupIndex, prop, propIndex, value):
+        return EngineComponentBase.SetProperty(self.UID, propGroup, groupIndex, prop , propIndex, value)
+    def GetProperty(self, propGroup, groupIndex, prop, propIndex):
+        return EngineComponentBase.GetProperty(self.UID, propGroup , groupIndex, prop , propIndex )
+    def AnimatePropertyVector4(self, propertyName, value, laptime, curveType):
+        return EngineComponentBase.AnimatePropertyVector4(self.UID, propertyName, str(value), laptime, curveType)
+    def AnimatePropertyVector4Loop(self, propertyName, value, laptime, curveType):
+        return EngineComponentBase.AnimatePropertyVector4Loop(self.UID, propertyName, str(value), laptime, curveType)
+    def AnimatePropertyVector4Delay(self, propertyName, value, beginTime, laptime, curveType):
+        return EngineComponentBase.AnimatePropertyVector4Delay(self.UID, propertyName, str(value), beginTime, laptime, curveType)
+    def AnimatePropertyVector4Mask(self, propertyName, value, laptime, curveType, mask):
+        return EngineComponentBase.AnimatePropertyVector4Mask(self.UID, propertyName, str(value), laptime, curveType, mask)
+    def AnimatePropertyVector4MaskLoop(self, propertyName, value, laptime, curveType, mask):
+        return EngineComponentBase.AnimatePropertyVector4MaskLoop(self.UID, propertyName, str(value), laptime, curveType, mask)
+    def AnimatePropertyVector4MaskDelay(self, propertyName, value, beginTime, laptime, curveType, mask):
+        return EngineComponentBase.AnimatePropertyVector4MaskDelay(self.UID, propertyName, str(value), beginTime, laptime, curveType, mask)
+    def AnimatePropertyQuaternion(self, propertyName, value, laptime, curveType):
+        return EngineComponentBase.AnimatePropertyQuaternion(self.UID, propertyName, str(value), laptime, curveType)
+    def AnimatePropertyQuaternionLoop(self, propertyName, value, laptime, curveType):
+        return EngineComponentBase.AnimatePropertyQuaternionLoop(self.UID, propertyName, str(value), laptime, curveType)
+    def AnimatePropertyQuaternionDelay(self, propertyName, value, beginTime, laptime, curveType):
+        return EngineComponentBase.AnimatePropertyQuaternionDelay(self.UID, propertyName, str(value), beginTime, laptime, curveType)
+    def AnimatePropertyRemoveAll(self, propertyName):
+        return EngineComponentBase.AnimatePropertyRemoveAll(self.UID, propertyName)
+ 
+Extending Function EngineComponentBase.KindOf Registered
+Extending Function EngineComponentBase.SetProperty Registered
+Extending Function EngineComponentBase.GetProperty Registered
+Extending Function EngineComponentBase.SendMessage Registered
+Extending Function EngineComponentBase.PostMessage Registered
+Extending Function EngineComponentBase.TimedMessage Registered
+Extending Function EngineComponentBase.PeriodicMessage Registered
+Extending Function EngineComponentBase.AnimatePropertyVector4 Registered
+Extending Function EngineComponentBase.AnimatePropertyVector4Loop Registered
+Extending Function EngineComponentBase.AnimatePropertyVector4Delay Registered
+Extending Function EngineComponentBase.AnimatePropertyVector4Mask Registered
+Extending Function EngineComponentBase.AnimatePropertyVector4MaskLoop Registered
+Extending Function EngineComponentBase.AnimatePropertyVector4MaskDelay Registered
+Extending Function EngineComponentBase.AnimatePropertyQuaternion Registered
+Extending Function EngineComponentBase.AnimatePropertyQuaternionLoop Registered
+Extending Function EngineComponentBase.AnimatePropertyQuaternionDelay Registered
+Extending Function EngineComponentBase.AnimatePropertyRemoveAll Registered
+===============================
+  
+class PropertyInstance(PropertyGroup) :
+    def __init__(self, componentBase):
+        PropertyGroup.__init__(self, componentBase)
+    def SetName(self, v):
+        self.ComponentBase.SetProperty("Instance", -1, "Name", 0, v)
+    def GetName(self):
+        return self.ComponentBase.GetProperty("Instance", -1, "Name", 0 )
+    def SetEnabled(self, v):
+        self.ComponentBase.SetProperty("Instance", -1, "Enabled", 0, v)
+    def GetEnabled(self):
+        return self.ComponentBase.GetProperty("Instance", -1, "Enabled", 0 )
+    def SetShow(self, v):
+        self.ComponentBase.SetProperty("Instance", -1, "Show", 0, v)
+    def GetShow(self):
+        return self.ComponentBase.GetProperty("Instance", -1, "Show", 0 )
+    def SetLocked(self, v):
+        self.ComponentBase.SetProperty("Instance", -1, "Locked", 0, v)
+    def GetLocked(self):
+        return self.ComponentBase.GetProperty("Instance", -1, "Locked", 0 )
+    def SetExpanded(self, v):
+        self.ComponentBase.SetProperty("Instance", -1, "Expanded", 0, v)
+    def GetExpanded(self):
+        return self.ComponentBase.GetProperty("Instance", -1, "Expanded", 0 )
+    def SetSelected(self, v):
+        self.ComponentBase.SetProperty("Instance", -1, "Selected", 0, v)
+    def GetSelected(self):
+        return self.ComponentBase.GetProperty("Instance", -1, "Selected", 0 )
+    def SetLayer(self, v):
+        self.ComponentBase.SetProperty("Instance", -1, "Layer", 0, v)
+    def GetLayer(self):
+        return self.ComponentBase.GetProperty("Instance", -1, "Layer", 0 )
+ 
+===============================
+  
+import EngineComponentArchivable
+class ComponentArchivable(ComponentBase) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropInstance = PropertyInstance(self)
+ 
+===============================
+  
+import EngineContainerComponent
+class ContainerComponent(ComponentArchivable) :
+    def __init__(self, UID):
+        ComponentArchivable.__init__(self, UID)
+    def OnWork(self, arg1):
+        return EngineComponentArchivable.OnWork(self.UID , arg1)
+ 
+Extending Function EngineContainerComponent.OnWork Registered
+===============================
+  
+import EngineContainer
+COMPONENT_TRANSFORMGROUP=0
+COMPONENT_WORLD=1
+COMPONENT_CAMERA=2
+COMPONENT_LIGHT=3
+class Container(ComponentArchivable) :
+    def __init__(self, UID):
+        ComponentArchivable.__init__(self, UID)
+    def GetReservedComponent(self, arg1):
+       id = EngineContainer.GetReservedComponent(self.UID , arg1)
+       if (id != 0) :
+           if (arg1 == COMPONENT_TRANSFORMGROUP):
+               return TrasnformGroup(id)
+           if (arg1 == COMPONENT_WORLD):
+               return World(id)
+           if (arg1 == COMPONENT_CAMERA):
+               return Camera(id)
+           if (arg1 == COMPONENT_LIGHT):
+               return Light(id)
+           return None
+       else :
+           return None
+    def AddNewChild(self):
+       id = EngineContainer.AddNewChild(self.UID)
+       if (id != 0) :
+           return Container(id)
+       else :
+           return None
+    def FindContainer(self, arg1):
+       id = EngineContainer.FindContainer(self.UID , arg1)
+       if (id != 0) :
+           return Container(id)
+       else :
+           return None
+    def GetParentContainer(self):
+       id = EngineContainer.GetParentContainer(self.UID)
+       if (id != 0) :
+           return Container(id)
+       else :
+           return None
+    def AddNewComponent(self, arg1):
+       id = EngineContainer.AddNewComponent(self.UID , arg1)
+       if (id != 0) :
+            exec(compile('self.obj='+arg1+'(id)' ,'<strings>', 'exec'))
+            return self.obj
+       else :
+           return None
+    def FindComponentByType(self, arg1):
+        id = EngineContainer.FindComponentByType(self.UID , arg1, 0)
+        if (id != 0) :
+            exec(compile('self.obj='+arg1+'(id)' ,'<strings>', 'exec'))
+            return self.obj
+        else :
+            return None
+    def FindComponentByTypeIndex(self, arg1, Nth):
+        id = EngineContainer.FindComponentByType(self.UID , arg1, Nth)
+        if (id != 0) :
+            exec(compile('self.obj='+arg1+'(id)' ,'<strings>', 'exec'))
+            return self.obj
+        else :
+            return None
+    def Find(self, arg1):
+        id = EngineContainer.Find(self.UID , arg1)
+        if (id != 0) :
+            exec(compile('self.obj='+arg1+'(id)' ,'<strings>', 'exec'))
+            return self.obj
+        else :
+            return None
+    def GetRootContainer(self):
+        id = EngineContainer.GetRootContainer(self.UID)
+        if (id != 0) :
+            return Container(id)
+        else :
+            return None
+    def LoadPrefab(self, arg1):
+        id = EngineContainer.LoadPrefab(self.UID , arg1)
+        if (id != 0) :
+            return Container(id)
+        else :
+            return None
+    def FindByName(self, arg1):
+        id = EngineContainer.FindByName(self.UID , arg1)
+        if (id != 0) :
+            return Container(id)
+        else :
+            return None
+    def GetChildrenCount(self):
+        return EngineContainer.GetChildrenCount(self.UID )
+    def GetChild(self, arg1):
+        id = EngineContainer.GetChild(self.UID , arg1)
+        if (id != 0) :
+            return Container(id)
+        else :
+            return None
+    def DeleteChild(self, arg1):
+        id = EngineContainer.DeleteChild(self.UID , arg1)
+        if (id != 0) :
+            return Container(id)
+        else :
+            return None
+    def GetChildIndex(self, obj ):
+        return EngineContainer.GetChildIndex(self.UID , obj.UID)
+    def CopyContainer(self, arg1):
+        id = EngineContainer.CopyContainer(self.UID , arg1.UID)
+        if (id != 0) :
+            return Container(id)
+        else :
+            return None
+    def DetachChild(self, arg1):
+        id = EngineContainer.DetachChild(self.UID , arg1)
+        if (id != 0) :
+            return Container(id)
+        else :
+            return None
+ 
+Extending Function EngineContainer.GetReservedComponent Registered
+Extending Function EngineContainer.AddNewChild Registered
+Extending Function EngineContainer.FindContainer Registered
+Extending Function EngineContainer.GetParentContainer Registered
+Extending Function EngineContainer.AddNewComponent Registered
+Extending Function EngineContainer.FindComponentByType Registered
+Extending Function EngineContainer.Find Registered
+Extending Function EngineContainer.GetRootContainer Registered
+Extending Function EngineContainer.LoadPrefab Registered
+Extending Function EngineContainer.FindByName Registered
+Extending Function EngineContainer.GetChildrenCount Registered
+Extending Function EngineContainer.GetChild Registered
+Extending Function EngineContainer.DeleteChild Registered
+Extending Function EngineContainer.GetChildIndex Registered
+Extending Function EngineContainer.CopyContainer Registered
+Extending Function EngineContainer.DetachChild Registered
+===============================
+  
+class PropertyMaterial(PropertyGroup) :
+    def __init__(self, fbxNodeMesh):
+        PropertyGroup.__init__(self, fbxNodeMesh)
+    def SetShadingModel(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "ShadingModel", 0, v)
+    def GetShadingModel(self):
+        return self.ComponentBase.GetProperty("Material", -1, "ShadingModel", 0 )
+    def SetVertexShader(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "VertexShader", 0, v)
+    def GetVertexShader(self):
+        return self.ComponentBase.GetProperty("Material", -1, "VertexShader", 0 )
+    def SetPixelShader(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "PixelShader", 0, v)
+    def GetPixelShader(self):
+        return self.ComponentBase.GetProperty("Material", -1, "PixelShader", 0 )
+    def SetAmbientColor(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "AmbientColor", 0, v)
+    def GetAmbientColor(self):
+        return self.ComponentBase.GetProperty("Material", -1, "AmbientColor", 0 )
+    def SetAmbientColorRate(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "AmbientColorRate", 0, v)
+    def GetAmbientColorRate(self):
+        return self.ComponentBase.GetProperty("Material", -1, "AmbientColorRate", 0 )
+    def SetOpacity(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Opacity", 0, v)
+    def GetOpacity(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Opacity", 0 )
+    def SetAlphaBlending(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "AlphaBlending", 0, v)
+    def GetAlphaBlending(self):
+        return self.ComponentBase.GetProperty("Material", -1, "AlphaBlending", 0 )
+    def SetAlphaTest(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "AlphaTest", 0, v)
+    def GetAlphaTest(self):
+        return self.ComponentBase.GetProperty("Material", -1, "AlphaTest", 0 )
+    def SetGlossiness(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Glossiness", 0, v)
+    def GetGlossiness(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Glossiness", 0 )
+    def SetShininess(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Shininess", 0, v)
+    def GetShininess(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Shininess", 0 )
+    def SetRoughness(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Roughness", 0, v)
+    def GetRoughness(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Roughness", 0 )
+    def SetCullBackFace(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "CullBackFace", 0, v)
+    def GetCullBackFace(self):
+        return self.ComponentBase.GetProperty("Material", -1, "CullBackFace", 0 )
+    def SetDepthFunc(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "DepthFunc", 0, v)
+    def GetDepthFunc(self):
+        return self.ComponentBase.GetProperty("Material", -1, "DepthFunc", 0 )
+    def SetDepthWriteMask(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "DepthWriteMask", 0, v)
+    def GetDepthWriteMask(self):
+        return self.ComponentBase.GetProperty("Material", -1, "DepthWriteMask", 0 )
+    def SetAddressing(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Addressing", 0, v)
+    def GetAddressing(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Addressing", 0 )
+    def SetTextureCacheSize(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureCacheSize", 0, v)
+    def GetTextureCacheSize(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureCacheSize", 0 )
+    def SetDiffuse(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Diffuse", 0, v)
+    def GetDiffuse(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Diffuse", 0 )
+    def SetAmbient(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Ambient", 0, v)
+    def GetAmbient(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Ambient", 0 )
+    def SetSpecular(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Specular", 0, v)
+    def GetSpecular(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Specular", 0 )
+    def SetMagFilter(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "MagFilter", 0, v)
+    def GetMagFilter(self):
+        return self.ComponentBase.GetProperty("Material", -1, "MagFilter", 0 )
+    def SetMinFilter(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "MinFilter", 0, v)
+    def GetMinFilter(self):
+        return self.ComponentBase.GetProperty("Material", -1, "MinFilter", 0 )
+    def SetShadowDarkness(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "ShadowDarkness", 0, v)
+    def GetShadowDarkness(self):
+        return self.ComponentBase.GetProperty("Material", -1, "ShadowDarkness", 0 )
+    def SetShadowCreate(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "ShadowCreate", 0, v)
+    def GetShadowCreate(self):
+        return self.ComponentBase.GetProperty("Material", -1, "ShadowCreate", 0 )
+    def SetShadowApply(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "ShadowApply", 0, v)
+    def GetShadowApply(self):
+        return self.ComponentBase.GetProperty("Material", -1, "ShadowApply", 0 )
+    def SetWireFrame(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "WireFrame", 0, v)
+    def GetWireFrame(self):
+        return self.ComponentBase.GetProperty("Material", -1, "WireFrame", 0 )
+    def SetNormalMapDirection(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "NormalMapDirection", 0, v)
+    def GetNormalMapDirection(self):
+        return self.ComponentBase.GetProperty("Material", -1, "NormalMapDirection", 0 )
+    def SetDiffuseColor(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "DiffuseColor", 0, v)
+    def GetDiffuseColor(self):
+        return self.ComponentBase.GetProperty("Material", -1, "DiffuseColor", 0 )
+    def SetUVOffset(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "UVOffset", 0, v)
+    def GetUVOffset(self):
+        return self.ComponentBase.GetProperty("Material", -1, "UVOffset", 0 )
+    def SetUVScale(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "UVScale", 0, v)
+    def GetUVScale(self):
+        return self.ComponentBase.GetProperty("Material", -1, "UVScale", 0 )
+    def SetFog(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Fog", 0, v)
+    def GetFog(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Fog", 0 )
+    def SetIsPBRMaterial(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "IsPBRMaterial", 0, v)
+    def GetIsPBRMaterial(self):
+        return self.ComponentBase.GetProperty("Material", -1, "IsPBRMaterial", 0 )
+    def SetUseAlbedoTexture(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "UseAlbedoTexture", 0, v)
+    def GetUseAlbedoTexture(self):
+        return self.ComponentBase.GetProperty("Material", -1, "UseAlbedoTexture", 0 )
+    def SetUseMetalSmoothnessTexture(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "UseMetalSmoothnessTexture", 0, v)
+    def GetUseMetalSmoothnessTexture(self):
+        return self.ComponentBase.GetProperty("Material", -1, "UseMetalSmoothnessTexture", 0 )
+    def SetUseAOTexture(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "UseAOTexture", 0, v)
+    def GetUseAOTexture(self):
+        return self.ComponentBase.GetProperty("Material", -1, "UseAOTexture", 0 )
+    def SetMetalliness(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Metalliness", 0, v)
+    def GetMetalliness(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Metalliness", 0 )
+    def SetSmoothness(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "Smoothness", 0, v)
+    def GetSmoothness(self):
+        return self.ComponentBase.GetProperty("Material", -1, "Smoothness", 0 )
+    def SetAlbedoColor(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "AlbedoColor", 0, v)
+    def GetAlbedoColor(self):
+        return self.ComponentBase.GetProperty("Material", -1, "AlbedoColor", 0 )
+    def SetTextureDiffuse(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureDiffuse", 0, v)
+    def GetTextureDiffuse(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureDiffuse", 0 )
+    def SetTextureEnv(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureEnv", 0, v)
+    def GetTextureEnv(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureEnv", 0 )
+    def SetTextureNormal(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureNormal", 0, v)
+    def GetTextureNormal(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureNormal", 0 )
+    def SetTextureSpecular(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureSpecular", 0, v)
+    def GetTextureSpecular(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureSpecular", 0 )
+    def SetTextureGlossiness(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureGlossiness", 0, v)
+    def GetTextureGlossiness(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureGlossiness", 0 )
+    def SetTextureRoughness(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureRoughness", 0, v)
+    def GetTextureRoughness(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureRoughness", 0 )
+    def SetTextureShininess(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureShininess", 0, v)
+    def GetTextureShininess(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureShininess", 0 )
+    def SetTextureEtc(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureEtc", 0, v)
+    def GetTextureEtc(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureEtc", 0 )
+    def SetTextureEtc(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureEtc", 0, v)
+    def GetTextureEtc(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureEtc", 0 )
+    def SetTextureEtc(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureEtc", 0, v)
+    def GetTextureEtc(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureEtc", 0 )
+    def SetTextureEtc(self, v):
+        self.ComponentBase.SetProperty("Material", -1, "TextureEtc", 0, v)
+    def GetTextureEtc(self):
+        return self.ComponentBase.GetProperty("Material", -1, "TextureEtc", 0 )
+ 
+===============================
+  
+class PropertyTransform(PropertyGroup) :
+    def __init__(self, TransformGroup):
+        PropertyGroup.__init__(self, TransformGroup)
+    def SetShow(self, v):
+        self.ComponentBase.SetProperty("Transform", -1, "Show", 0, v)
+    def GetShow(self):
+        return self.ComponentBase.GetProperty("Transform", -1, "Show", 0 )
+    def SetPosition(self, v):
+        self.ComponentBase.SetProperty("Transform", -1, "Position", 0, v)
+    def GetPosition(self):
+        return self.ComponentBase.GetProperty("Transform", -1, "Position", 0 )
+    def SetScale(self, v):
+        self.ComponentBase.SetProperty("Transform", -1, "Scale", 0, v)
+    def GetScale(self):
+        return self.ComponentBase.GetProperty("Transform", -1, "Scale", 0 )
+    def SetRotation(self, v):
+        self.ComponentBase.SetProperty("Transform", -1, "Rotation", 0, v)
+    def GetRotation(self):
+        return self.ComponentBase.GetProperty("Transform", -1, "Rotation", 0 )
+    def SetRotationEuler(self, v):
+        self.ComponentBase.SetProperty("Transform", -1, "RotationEuler", 0, v)
+    def GetRotationEuler(self):
+        return self.ComponentBase.GetProperty("Transform", -1, "RotationEuler", 0 )
+    def SetSortType(self, v):
+        self.ComponentBase.SetProperty("Transform", -1, "SortType", 0, v)
+    def GetSortType(self):
+        return self.ComponentBase.GetProperty("Transform", -1, "SortType", 0 )
+    def SetFixedOrder(self, v):
+        self.ComponentBase.SetProperty("Transform", -1, "FixedOrder", 0, v)
+    def GetFixedOrder(self):
+        return self.ComponentBase.GetProperty("Transform", -1, "FixedOrder", 0 )
+    def SetCullType(self, v):
+        self.ComponentBase.SetProperty("Transform", -1, "CullType", 0, v)
+    def GetCullType(self):
+        return self.ComponentBase.GetProperty("Transform", -1, "CullType", 0 )
+    def SetBillboardType(self, v):
+        self.ComponentBase.SetProperty("Transform", -1, "BillboardType", 0, v)
+    def GetBillboardType(self):
+        return self.ComponentBase.GetProperty("Transform", -1, "BillboardType", 0 )
+ 
+===============================
+  
+import EngineTransformGroup
+class TransformGroup(ContainerComponent) :
+    def __init__(self, UID):
+        ContainerComponent.__init__(self, UID)
+        self.PropTransform = PropertyTransform(self)
+    def OnWork(self, arg1):
+        return EngineTransformGroup.OnWork(self.UID , arg1)
+    def GetLocalRotation(self):
+        v = Math3d.Quaternion()
+        v.FromString( EngineTransformGroup.GetLocalRotation(self.UID ) )
+        return v
+    def GetRotation(self):
+        v = Math3d.Quaternion()
+        v.FromString( EngineTransformGroup.GetRotation(self.UID ) )
+        return v
+    def GetLocalScale(self):
+        v = Math3d.Vector3()
+        v.FromString( EngineTransformGroup.GetLocalScale(self.UID ) )
+        return v
+    def GetScale(self):
+        v = Math3d.Vector3()
+        v.FromString( EngineTransformGroup.GetScale(self.UID ) )
+        return v
+    def GetLocalPosition(self):
+        v = Math3d.Vector3()
+        v.FromString( EngineTransformGroup.GetLocalPosition(self.UID ) )
+        return v
+    def GetPosition(self):
+        v = Math3d.Vector3()
+        v.FromString( EngineTransformGroup.GetPosition(self.UID ) )
+        return v
+    def GetUp(self):
+        v = Math3d.Vector3()
+        v.FromString( EngineTransformGroup.GetUp(self.UID ) )
+        return v
+    def GetTarget(self):
+        v = Math3d.Vector3()
+        v.FromString( EngineTransformGroup.GetTarget(self.UID ) )
+        return v
+    def GetDirection(self):
+        v = Math3d.Vector3()
+        v.FromString( EngineTransformGroup.GetDirection(self.UID ) )
+        return v
+    def WorldToLocalPosition(self, arg1):
+        EngineTransformGroup.WorldToLocalPosition(self.UID , str(arg1))
+    def WorldToLocalDirection(self, arg1):
+        EngineTransformGroup.WorldToLocalDirection(self.UID , str(arg1))
+    def LocalToWorldPosition(self, arg1):
+        EngineTransformGroup.LocalToWorldPosition(self.UID , str(arg1))
+    def LocalToWorldDirection(self, arg1):
+        EngineTransformGroup.LocalToWorldDirection(self.UID , str(arg1))
+    def IsVisible(self):
+        return EngineTransformGroup.IsVisible(self.UID )
+    def IsTransparent(self):
+        return EngineTransformGroup.IsTransparent(self.UID )
+    def IsCullable(self):
+        return EngineTransformGroup.IsCullable(self.UID )
+    def GetLocalBox(self):
+        v = BoundingBoxMath.BoundingBox()
+        v.FromString( EngineTransformGroup.GetLocalBox(self.UID ) )
+        return v
+    def GetWorldBox(self):
+        v = BoundingBoxMath.BoundingBox()
+        v.FromString( EngineTransformGroup.GetWorldBox(self.UID ) )
+        return v
+    def GetSumBox(self):
+        v = BoundingBoxMath.BoundingBox()
+        v.FromString( EngineTransformGroup.GetSumBox(self.UID ) )
+        return v
+    def SetLocalRotation(self, arg1):
+        EngineTransformGroup.SetLocalRotation(self.UID , str(arg1))
+    def SetRotation(self, arg1):
+        EngineTransformGroup.SetRotation(self.UID , str(arg1))
+    def SetLocalPosition(self, arg1):
+        EngineTransformGroup.SetLocalPosition(self.UID , str(arg1))
+    def SetPosition(self, arg1):
+        EngineTransformGroup.SetPosition(self.UID , str(arg1))
+    def SetLocalScale(self, arg1):
+        EngineTransformGroup.SetLocalScale(self.UID , str(arg1))
+    def SetScale(self, arg1):
+        EngineTransformGroup.SetScale(self.UID , str(arg1))
+    def LookAtLocalDirection(self, arg1):
+        EngineTransformGroup.LookAtLocalDirection(self.UID , str(arg1))
+    def LookAt(self, arg1, arg2, arg3):
+        EngineTransformGroup.LookAt(self.UID , str(arg1), str(arg2), str(arg3))
+    def LookAtPosition(self, arg1):
+        EngineTransformGroup.LookAtPosition(self.UID , str(arg1))
+    def ShiftPosition(self, arg1):
+        EngineTransformGroup.ShiftPosition(self.UID , str(arg1))
+    def ViewTop(self, arg1, arg2):
+        EngineTransformGroup.ViewTop(self.UID , str(arg1), arg2)
+    def ViewBottom(self, arg1, arg2):
+        EngineTransformGroup.ViewBottom(self.UID , str(arg1), arg2)
+    def ViewLeft(self, arg1, arg2):
+        EngineTransformGroup.ViewLeft(self.UID , str(arg1), arg2)
+    def ViewRight(self, arg1, arg2):
+        EngineTransformGroup.ViewRight(self.UID , str(arg1), arg2)
+    def ViewFront(self, arg1, arg2):
+        EngineTransformGroup.ViewFront(self.UID , str(arg1), arg2)
+    def ViewRear(self, arg1, arg2):
+        EngineTransformGroup.ViewRear(self.UID , str(arg1), arg2)
+    def Rotate(self, arg1, arg2, arg3):
+        EngineTransformGroup.Rotate(self.UID , arg1, arg2, str(arg3))
+    def MoveForward(self, arg1):
+        EngineTransformGroup.MoveForward(self.UID , arg1)
+ 
+Extending Function EngineTransformGroup.GetLocalRotation Registered
+Extending Function EngineTransformGroup.GetRotation Registered
+Extending Function EngineTransformGroup.GetLocalScale Registered
+Extending Function EngineTransformGroup.GetScale Registered
+Extending Function EngineTransformGroup.GetLocalPosition Registered
+Extending Function EngineTransformGroup.GetPosition Registered
+Extending Function EngineTransformGroup.GetUp Registered
+Extending Function EngineTransformGroup.GetTarget Registered
+Extending Function EngineTransformGroup.GetDirection Registered
+Extending Function EngineTransformGroup.WorldToLocalPosition Registered
+Extending Function EngineTransformGroup.WorldToLocalDirection Registered
+Extending Function EngineTransformGroup.LocalToWorldPosition Registered
+Extending Function EngineTransformGroup.LocalToWorldDirection Registered
+Extending Function EngineTransformGroup.IsVisible Registered
+Extending Function EngineTransformGroup.IsTransparent Registered
+Extending Function EngineTransformGroup.IsCullable Registered
+Extending Function EngineTransformGroup.GetLocalBox Registered
+Extending Function EngineTransformGroup.GetWorldBox Registered
+Extending Function EngineTransformGroup.GetSumBox Registered
+Extending Function EngineTransformGroup.SetLocalRotation Registered
+Extending Function EngineTransformGroup.SetRotation Registered
+Extending Function EngineTransformGroup.SetLocalPosition Registered
+Extending Function EngineTransformGroup.SetPosition Registered
+Extending Function EngineTransformGroup.SetLocalScale Registered
+Extending Function EngineTransformGroup.SetScale Registered
+Extending Function EngineTransformGroup.LookAtLocalDirection Registered
+Extending Function EngineTransformGroup.LookAt Registered
+Extending Function EngineTransformGroup.LookAtPosition Registered
+Extending Function EngineTransformGroup.ShiftPosition Registered
+Extending Function EngineTransformGroup.ViewTop Registered
+Extending Function EngineTransformGroup.ViewBottom Registered
+Extending Function EngineTransformGroup.ViewLeft Registered
+Extending Function EngineTransformGroup.ViewRight Registered
+Extending Function EngineTransformGroup.ViewFront Registered
+Extending Function EngineTransformGroup.ViewRear Registered
+Extending Function EngineTransformGroup.Rotate Registered
+Extending Function EngineTransformGroup.MoveForward Registered
+Extending Function EngineTransformGroup.FindNearCollision Registered
+Extending Function EngineTransformGroup.FindNearestCollision Registered
+===============================
+  
+class PropertyRigidMesh(PropertyGroup) :
+    def __init__(self, rigidMesh):
+        PropertyGroup.__init__(self, rigidMesh)
+    def SetMaterial(self, v):
+        self.ComponentBase.SetProperty("RigidMesh", -1, "Material", 0, v)
+    def GetMaterial(self):
+        return self.ComponentBase.GetProperty("RigidMesh", -1, "Material", 0 )
+    def SetMesh(self, v):
+        self.ComponentBase.SetProperty("RigidMesh", -1, "Mesh", 0, v)
+    def GetMesh(self):
+        return self.ComponentBase.GetProperty("RigidMesh", -1, "Mesh", 0 )
+ 
+===============================
+  
+import EngineRigidMesh
+class RigidMesh(ContainerComponent) :
+    def __init__(self, UID):
+        ContainerComponent.__init__(self, UID)
+        self.PropRigidMesh = PropertyRigidMesh(self)
+        self.PropMaterial = PropertyMaterial(self)
+ 
+===============================
+  
+class PropertyCube(PropertyGroup) :
+    def __init__(self, cube):
+        PropertyGroup.__init__(self, cube)
+    def SetWidth(self, v):
+        self.ComponentBase.SetProperty("Cube", -1, "Width", 0, v)
+    def GetWidth(self):
+        return self.ComponentBase.GetProperty("Cube", -1, "Width", 0 )
+    def SetHeight(self, v):
+        self.ComponentBase.SetProperty("Cube", -1, "Height", 0, v)
+    def GetHeight(self):
+        return self.ComponentBase.GetProperty("Cube", -1, "Height", 0 )
+    def SetDepth(self, v):
+        self.ComponentBase.SetProperty("Cube", -1, "Depth", 0, v)
+    def GetDepth(self):
+        return self.ComponentBase.GetProperty("Cube", -1, "Depth", 0 )
+    def SetName(self, v):
+        self.ComponentBase.SetProperty("Cube", -1, "Name", 0, v)
+    def GetName(self):
+        return self.ComponentBase.GetProperty("Cube", -1, "Name", 0 )
+ 
+===============================
+  
+import EngineRigidMesh
+import EngineCube
+class Cube(RigidMesh) :
+    def __init__(self, UID):
+        RigidMesh.__init__(self, UID)
+        self.PropCube = PropertyCube(self)
+ 
+===============================
+  
+class PropertySphere(PropertyGroup) :
+    def __init__(self, sphere):
+        PropertyGroup.__init__(self, sphere)
+    def SetUseIcosahedron(self, v):
+        self.ComponentBase.SetProperty("Sphere", -1, "UseIcosahedron", 0, v)
+    def GetUseIcosahedron(self):
+        return self.ComponentBase.GetProperty("Sphere", -1, "UseIcosahedron", 0 )
+    def SetUseRect(self, v):
+        self.ComponentBase.SetProperty("Sphere", -1, "UseRect", 0, v)
+    def GetUseRect(self):
+        return self.ComponentBase.GetProperty("Sphere", -1, "UseRect", 0 )
+    def SetIcosahedronInteration(self, v):
+        self.ComponentBase.SetProperty("Sphere", -1, "IcosahedronInteration", 0, v)
+    def GetIcosahedronInteration(self):
+        return self.ComponentBase.GetProperty("Sphere", -1, "IcosahedronInteration", 0 )
+    def SetRadius(self, v):
+        self.ComponentBase.SetProperty("Sphere", -1, "Radius", 0, v)
+    def GetRadius(self):
+        return self.ComponentBase.GetProperty("Sphere", -1, "Radius", 0 )
+    def SetLongitutionalCut(self, v):
+        self.ComponentBase.SetProperty("Sphere", -1, "LongitutionalCut", 0, v)
+    def GetLongitutionalCut(self):
+        return self.ComponentBase.GetProperty("Sphere", -1, "LongitutionalCut", 0 )
+    def SetLatitutionalCut(self, v):
+        self.ComponentBase.SetProperty("Sphere", -1, "LatitutionalCut", 0, v)
+    def GetLatitutionalCut(self):
+        return self.ComponentBase.GetProperty("Sphere", -1, "LatitutionalCut", 0 )
+ 
+===============================
+  
+import EngineRigidMesh
+import EngineSphere
+class Sphere(RigidMesh) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropSphere = PropertySphere(self)
+ 
+===============================
+  
+class PropertyAnimation(PropertyGroup) :
+    def __init__(self, animation):
+        PropertyGroup.__init__(self, animation)
+    def SetEventHandler(self, v):
+        self.ComponentBase.SetProperty("Animation", -1, "EventHandler", 0, v)
+    def GetEventHandler(self):
+        return self.ComponentBase.GetProperty("Animation", -1, "EventHandler", 0 )
+    def SetActiveAnimation(self, v):
+        self.ComponentBase.SetProperty("Animation", -1, "ActiveAnimation", 0, v)
+    def GetActiveAnimation(self):
+        return self.ComponentBase.GetProperty("Animation", -1, "ActiveAnimation", 0 )
+    def SetIdleAnimation(self, v):
+        self.ComponentBase.SetProperty("Animation", -1, "IdleAnimation", 0, v)
+    def GetIdleAnimation(self):
+        return self.ComponentBase.GetProperty("Animation", -1, "IdleAnimation", 0 )
+    def SetAnimationSpeed(self, v):
+        self.ComponentBase.SetProperty("Animation", -1, "AnimationSpeed", 0, v)
+    def GetAnimationSpeed(self):
+        return self.ComponentBase.GetProperty("Animation", -1, "AnimationSpeed", 0 )
+    def SetAnimationTime(self, v):
+        self.ComponentBase.SetProperty("Animation", -1, "AnimationTime", 0, v)
+    def GetAnimationTime(self):
+        return self.ComponentBase.GetProperty("Animation", -1, "AnimationTime", 0 )
+    def SetAnimationPlay(self, v):
+        self.ComponentBase.SetProperty("Animation", -1, "AnimationPlay", 0, v)
+    def GetAnimationPlay(self):
+        return self.ComponentBase.GetProperty("Animation", -1, "AnimationPlay", 0 )
+    def SetIsStartPlay(self, v):
+        self.ComponentBase.SetProperty("Animation", -1, "IsStartPlay", 0, v)
+    def GetIsStartPlay(self):
+        return self.ComponentBase.GetProperty("Animation", -1, "IsStartPlay", 0 )
+ 
+===============================
+  
+import EngineAnimation
+class Animation(ContainerComponent) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropAnimation = PropertyAnimation(self)
+    def PlayResource(self, arg1):
+        EngineAnimation.PlayResource(self.UID , arg1)
+    def Play(self):
+        EngineAnimation.Play(self.UID )
+    def Stop(self):
+        EngineAnimation.Stop(self.UID )
+    def Pause(self):
+        EngineAnimation.Pause(self.UID )
+    def IsPlaying(self):
+        return EngineAnimation.IsPlaying(self.UID )
+    def IsLoop(self):
+        return EngineAnimation.IsLoop(self.UID )
+    def SetActiveAnimation(self, arg1):
+        return EngineAnimation.SetActiveAnimation(self.UID , arg1)
+    def SetIdleAnimation(self, arg1):
+        return EngineAnimation.SetIdleAnimation(self.UID , arg1)
+    def SetTime(self, arg1):
+        EngineAnimation.SetTime(self.UID , arg1)
+    def SetPlaySpeed(self, arg1):
+        EngineAnimation.SetPlaySpeed(self.UID , arg1)
+    def GetActiveAnimation(self):
+        return EngineAnimation.GetActiveAnimation(self.UID )
+    def GetIdleAnimation(self):
+        return EngineAnimation.GetIdleAnimation(self.UID )
+    def GetAnimationLength(self):
+        return EngineAnimation.GetAnimationLength(self.UID )
+    def GetTime(self):
+        return EngineAnimation.GetTime(self.UID )
+    def GetPlaySpeed(self):
+        return EngineAnimation.GetPlaySpeed(self.UID )
+ 
+Extending Function EngineAnimation.PlayResource Registered
+Extending Function EngineAnimation.Play Registered
+Extending Function EngineAnimation.Stop Registered
+Extending Function EngineAnimation.Pause Registered
+Extending Function EngineAnimation.IsPlaying Registered
+Extending Function EngineAnimation.IsLoop Registered
+Extending Function EngineAnimation.SetActiveAnimation Registered
+Extending Function EngineAnimation.SetIdleAnimation Registered
+Extending Function EngineAnimation.SetTime Registered
+Extending Function EngineAnimation.SetPlaySpeed Registered
+Extending Function EngineAnimation.GetActiveAnimation Registered
+Extending Function EngineAnimation.GetIdleAnimation Registered
+Extending Function EngineAnimation.GetAnimationLength Registered
+Extending Function EngineAnimation.GetTime Registered
+Extending Function EngineAnimation.GetPlaySpeed Registered
+===============================
+  
+class PropertyCamera(PropertyGroup) :
+    def __init__(self, Camera):
+        PropertyGroup.__init__(self, Camera)
+    def SetRenderOrder(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "RenderOrder", 0, v)
+    def GetRenderOrder(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "RenderOrder", 0 )
+    def SetClearDepth(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "ClearDepth", 0, v)
+    def GetClearDepth(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "ClearDepth", 0 )
+    def SetClearColor(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "ClearColor", 0, v)
+    def GetClearColor(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "ClearColor", 0 )
+    def SetLayerFilter(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "LayerFilter", 0, v)
+    def GetLayerFilter(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "LayerFilter", 0 )
+    def SetNearViewPlane(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "NearViewPlane", 0, v)
+    def GetNearViewPlane(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "NearViewPlane", 0 )
+    def SetFarViewPlane(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "FarViewPlane", 0, v)
+    def GetFarViewPlane(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "FarViewPlane", 0 )
+    def SetFarViewPlaneSky(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "FarViewPlaneSky", 0, v)
+    def GetFarViewPlaneSky(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "FarViewPlaneSky", 0 )
+    def SetFocalLength(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "FocalLength", 0, v)
+    def GetFocalLength(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "FocalLength", 0 )
+    def SetAspectRatio(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "AspectRatio", 0, v)
+    def GetAspectRatio(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "AspectRatio", 0 )
+    def SetFocusingDistance(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "FocusingDistance", 0, v)
+    def GetFocusingDistance(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "FocusingDistance", 0 )
+    def SetOrthographicViewSize(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "OrthographicViewSize", 0, v)
+    def GetOrthographicViewSize(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "OrthographicViewSize", 0 )
+    def SetOffset(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "Offset", 0, v)
+    def GetOffset(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "Offset", 0 )
+    def SetViewPortCenter(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "ViewPortCenter", 0, v)
+    def GetViewPortCenter(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "ViewPortCenter", 0 )
+    def SetViewPortSize(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "ViewPortSize", 0, v)
+    def GetViewPortSize(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "ViewPortSize", 0 )
+    def SetEnableCulling(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "EnableCulling", 0, v)
+    def GetEnableCulling(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "EnableCulling", 0 )
+    def SetBackColor(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "BackColor", 0, v)
+    def GetBackColor(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "BackColor", 0 )
+    def SetDrawGrid(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "DrawGrid", 0, v)
+    def GetDrawGrid(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "DrawGrid", 0 )
+    def SetGridAlpha(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "GridAlpha", 0, v)
+    def GetGridAlpha(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "GridAlpha", 0 )
+    def SetGridInterval(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "GridInterval", 0, v)
+    def GetGridInterval(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "GridInterval", 0 )
+    def SetBackgroundType(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "BackgroundType", 0, v)
+    def GetBackgroundType(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "BackgroundType", 0 )
+    def SetBackgroundTextureFile(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "BackgroundTextureFile", 0, v)
+    def GetBackgroundTextureFile(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "BackgroundTextureFile", 0 )
+    def SetWireFrame(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "WireFrame", 0, v)
+    def GetWireFrame(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "WireFrame", 0 )
+    def SetStereoCamera(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "StereoCamera", 0, v)
+    def GetStereoCamera(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "StereoCamera", 0 )
+    def SetStereoEyeOffset(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "StereoEyeOffset", 0, v)
+    def GetStereoEyeOffset(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "StereoEyeOffset", 0 )
+    def SetCullCamera(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "CullCamera", 0, v)
+    def GetCullCamera(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "CullCamera", 0 )
+    def SetRenderToTexture(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "RenderToTexture", 0, v)
+    def GetRenderToTexture(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "RenderToTexture", 0 )
+    def SetUseOcclusionCulling(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "UseOcclusionCulling", 0, v)
+    def GetUseOcclusionCulling(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "UseOcclusionCulling", 0 )
+    def SetOccluderMapResolution(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "OccluderMapResolution", 0, v)
+    def GetOccluderMapResolution(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "OccluderMapResolution", 0 )
+    def SetCubeMapResolution(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "CubeMapResolution", 0, v)
+    def GetCubeMapResolution(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "CubeMapResolution", 0 )
+    def SetCubeMapPath(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "CubeMapPath", 0, v)
+    def GetCubeMapPath(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "CubeMapPath", 0 )
+    def SetDebugRenderTargetView(self, v):
+        self.ComponentBase.SetProperty("Camera", -1, "DebugRenderTargetView", 0, v)
+    def GetDebugRenderTargetView(self):
+        return self.ComponentBase.GetProperty("Camera", -1, "DebugRenderTargetView", 0 )
+ 
+===============================
+  
+class PropertyShadowMap(PropertyGroup) :
+    def __init__(self, Camera):
+        PropertyGroup.__init__(self, Camera)
+    def SetUseShadowMap(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "UseShadowMap", 0, v)
+    def GetUseShadowMap(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "UseShadowMap", 0 )
+    def SetShadowBias(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "ShadowBias", 0, v)
+    def GetShadowBias(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "ShadowBias", 0 )
+    def SetSoftShadow(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "SoftShadow", 0, v)
+    def GetSoftShadow(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "SoftShadow", 0 )
+    def SetShadowMapDepthMax(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "ShadowMapDepthMax", 0, v)
+    def GetShadowMapDepthMax(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "ShadowMapDepthMax", 0 )
+    def SetShadowMapCascadeLevel(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "ShadowMapCascadeLevel", 0, v)
+    def GetShadowMapCascadeLevel(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "ShadowMapCascadeLevel", 0 )
+    def SetShadowMapResolution(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "ShadowMapResolution", 0, v)
+    def GetShadowMapResolution(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "ShadowMapResolution", 0 )
+    def SetSoftShadowLenght(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "SoftShadowLenght", 0, v)
+    def GetSoftShadowLenght(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "SoftShadowLenght", 0 )
+    def SetUseStaticShadowMap(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "UseStaticShadowMap", 0, v)
+    def GetUseStaticShadowMap(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "UseStaticShadowMap", 0 )
+    def SetStaticShadowMapResolution(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "StaticShadowMapResolution", 0, v)
+    def GetStaticShadowMapResolution(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "StaticShadowMapResolution", 0 )
+    def SetRealTimeStaticShadowMap(self, v):
+        self.ComponentBase.SetProperty("ShadowMap", -1, "RealTimeStaticShadowMap", 0, v)
+    def GetRealTimeStaticShadowMap(self):
+        return self.ComponentBase.GetProperty("ShadowMap", -1, "RealTimeStaticShadowMap", 0 )
+ 
+===============================
+  
+import EngineCamera
+class Camera(ContainerComponent) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropCamera = PropertyCamera(self)
+        self.PropShadowMap = PropertyShadowMap(self)
+    def PrepareInterface(self):
+        return EngineCamera.PrepareInterface(self.UID )
+    def GetLastPickingObject(self):
+        id = EngineCamera.GetLastPickingObject(self.UID)
+        if (id != 0) :
+            return Container(id)
+        else :
+            return None
+    def GetLastPickingDistance(self):
+        return EngineCamera.GetLastPickingDistance(self.UID )
+    def GetLastPickingPosition(self):
+        v = Math3d.Vector3()
+        v.FromString( EngineCamera.GetLastPickingPosition(self.UID ) )
+        return v
+    def GetProjectionMatrix(self):
+        v = Math3d.Matrix()
+        v.FromString( EngineCamera.GetProjectionMatrix(self.UID ) )
+        return v
+    def GetViewMatrix(self):
+        v = Math3d.Matrix()
+        v.FromString( EngineCamera.GetViewMatrix(self.UID ) )
+        return v
+    def GetViewProjectionMatrix(self):
+        v = Math3d.Matrix()
+        v.FromString( EngineCamera.GetViewProjectionMatrix(self.UID ) )
+        return v
+    def WorldCoordToScreenCoord(self, arg1):
+        v = Math3d.Vector4()
+        v.FromString( EngineCamera.WorldCoordToScreenCoord(self.UID , str(arg1)) )
+        return v
+    def ScreenCoordToWorldCoord(self, arg1):
+        v = Math3d.Vector3()
+        v.FromString( EngineCamera.ScreenCoordToWorldCoord(self.UID , str(arg1)) )
+        return v
+    def SetupView(self, arg1, arg2):
+        return EngineCamera.SetupView(self.UID , arg1, arg2)
+    def Pan(self, arg1, arg2):
+        EngineCamera.Pan(self.UID , arg1, arg2)
+    def GetPickRay(self, arg1, arg2, arg3, arg4, arg5, arg6, arg7):
+        return EngineCamera.GetPickRay(self.UID , arg1, arg2, arg3, arg4, arg5, str(arg6), str(arg7))
+    def GetPickedObject(self, obj , x , y , usePolygon , getFbxParent):
+        if obj == None:
+            return EngineCamera.GetPickedObject(self.UID , 0 ,int(x) ,int(y),usePolygon,getFbxParent)
+        else:
+            return EngineCamera.GetPickedObject(self.UID , obj.UID ,int(x) ,int(y),usePolygon,getFbxParent)
+ 
+Extending Function EngineCamera.PrepareInterface Registered
+Extending Function EngineCamera.GetLastPickingObject Registered
+Extending Function EngineCamera.GetLastPickingDistance Registered
+Extending Function EngineCamera.GetLastPickingPosition Registered
+Extending Function EngineCamera.GetProjectionMatrix Registered
+Extending Function EngineCamera.GetViewMatrix Registered
+Extending Function EngineCamera.GetViewProjectionMatrix Registered
+Extending Function EngineCamera.WorldCoordToScreenCoord Registered
+Extending Function EngineCamera.ScreenCoordToWorldCoord Registered
+Extending Function EngineCamera.SetupView Registered
+Extending Function EngineCamera.Pan Registered
+Extending Function EngineCamera.GetPickRay Registered
+Extending Function EngineCamera.GetPickedObject Registered
+===============================
+  
+class PropertyFbxFile(PropertyGroup) :
+    def __init__(self, Fbx):
+        PropertyGroup.__init__(self, Fbx)
+    def SetFbxFile(self, v):
+        self.ComponentBase.SetProperty("FbxFile", -1, "FbxFile", 0, v)
+    def GetFbxFile(self):
+        return self.ComponentBase.GetProperty("FbxFile", -1, "FbxFile", 0 )
+ 
+===============================
+  
+class PropertyFbxAnimation(PropertyGroup) :
+    def __init__(self, Fbx):
+        PropertyGroup.__init__(self, Fbx)
+    def SetEventHandler(self, v):
+        self.ComponentBase.SetProperty("FbxAnimation", -1, "EventHandler", 0, v)
+    def GetEventHandler(self):
+        return self.ComponentBase.GetProperty("FbxAnimation", -1, "EventHandler", 0 )
+    def SetActiveAnimation(self, v):
+        self.ComponentBase.SetProperty("FbxAnimation", -1, "ActiveAnimation", 0, v)
+    def GetActiveAnimation(self):
+        return self.ComponentBase.GetProperty("FbxAnimation", -1, "ActiveAnimation", 0 )
+    def SetIdleAnimation(self, v):
+        self.ComponentBase.SetProperty("FbxAnimation", -1, "IdleAnimation", 0, v)
+    def GetIdleAnimation(self):
+        return self.ComponentBase.GetProperty("FbxAnimation", -1, "IdleAnimation", 0 )
+    def SetAnimationSpeed(self, v):
+        self.ComponentBase.SetProperty("FbxAnimation", -1, "AnimationSpeed", 0, v)
+    def GetAnimationSpeed(self):
+        return self.ComponentBase.GetProperty("FbxAnimation", -1, "AnimationSpeed", 0 )
+    def SetAnimationTime(self, v):
+        self.ComponentBase.SetProperty("FbxAnimation", -1, "AnimationTime", 0, v)
+    def GetAnimationTime(self):
+        return self.ComponentBase.GetProperty("FbxAnimation", -1, "AnimationTime", 0 )
+    def SetAnimationLoopTime(self, v):
+        self.ComponentBase.SetProperty("FbxAnimation", -1, "AnimationLoopTime", 0, v)
+    def GetAnimationLoopTime(self):
+        return self.ComponentBase.GetProperty("FbxAnimation", -1, "AnimationLoopTime", 0 )
+    def SetAnimationPlay(self, v):
+        self.ComponentBase.SetProperty("FbxAnimation", -1, "AnimationPlay", 0, v)
+    def GetAnimationPlay(self):
+        return self.ComponentBase.GetProperty("FbxAnimation", -1, "AnimationPlay", 0 )
+    def SetIsStartPlay(self, v):
+        self.ComponentBase.SetProperty("FbxAnimation", -1, "IsStartPlay", 0, v)
+    def GetIsStartPlay(self):
+        return self.ComponentBase.GetProperty("FbxAnimation", -1, "IsStartPlay", 0 )
+ 
+===============================
+  
+class PropertyFbxAnimationList(PropertyGroup) :
+    def __init__(self, Fbx):
+        PropertyGroup.__init__(self, Fbx)
+ 
+===============================
+  
+import EngineFbx
+class Fbx(ContainerComponent) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropFbxFile = PropertyFbxFile(self)
+        self.PropFbxAnimation = PropertyFbxAnimation(self)
+        self.AnimationList = PropertyFbxAnimationList(self)
+    def Play(self):
+        EngineFbx.Play(self.UID )
+    def Pause(self):
+        EngineFbx.Pause(self.UID )
+    def Stop(self):
+        EngineFbx.Stop(self.UID )
+    def ClearActiveAnimation(self):
+        EngineFbx.ClearActiveAnimation(self.UID )
+    def SetActiveAnimationByName(self, arg1):
+        return EngineFbx.SetActiveAnimationByName(self.UID , arg1)
+    def GetAnimationLength(self, arg1):
+        return EngineFbx.GetAnimationLength(self.UID , arg1)
+    def SetActiveAnimationByIndex(self, arg1):
+        return EngineFbx.SetActiveAnimationByIndex(self.UID , arg1)
+    def UpdateAnimationEnumerator(self):
+        EngineFbx.UpdateAnimationEnumerator(self.UID )
+    def IsFbxVisible(self):
+        return EngineFbx.IsFbxVisible(self.UID )
+    def IsFbxTransparent(self):
+        return EngineFbx.IsFbxTransparent(self.UID )
+    def CheckFbxFlip(self):
+        EngineFbx.CheckFbxFlip(self.UID )
+    def GetAnimationMode(self):
+        return EngineFbx.GetAnimationMode(self.UID )
+    def SetAnimationMode(self, arg1):
+        EngineFbx.SetAnimationMode(self.UID , arg1)
+    def GetActiveAnimationIndex(self):
+        return EngineFbx.GetActiveAnimationIndex(self.UID )
+    def SetActiveAnimationIndex(self, arg1):
+        EngineFbx.SetActiveAnimationIndex(self.UID , arg1)
+    def GetAnimationCurrentTime(self):
+        return EngineFbx.GetAnimationCurrentTime(self.UID )
+    def SetAnimationCurrentTime(self, arg1):
+        EngineFbx.SetAnimationCurrentTime(self.UID , arg1)
+ 
+Extending Function EngineFbx.Play Registered
+Extending Function EngineFbx.Pause Registered
+Extending Function EngineFbx.Stop Registered
+Extending Function EngineFbx.ClearActiveAnimation Registered
+Extending Function EngineFbx.SetActiveAnimationByName Registered
+Extending Function EngineFbx.GetAnimationLength Registered
+Extending Function EngineFbx.SetActiveAnimationByIndex Registered
+Extending Function EngineFbx.UpdateAnimationEnumerator Registered
+Extending Function EngineFbx.IsFbxVisible Registered
+Extending Function EngineFbx.IsFbxTransparent Registered
+Extending Function EngineFbx.CheckFbxFlip Registered
+Extending Function EngineFbx.GetAnimationMode Registered
+Extending Function EngineFbx.SetAnimationMode Registered
+Extending Function EngineFbx.GetActiveAnimationIndex Registered
+Extending Function EngineFbx.SetActiveAnimationIndex Registered
+Extending Function EngineFbx.GetAnimationCurrentTime Registered
+Extending Function EngineFbx.SetAnimationCurrentTime Registered
+===============================
+  
+import EngineFbxNodeBase
+class FbxNodeBase(ContainerComponent) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropFbxFile = PropertyFbxFile(self)
+ 
+===============================
+  
+class PropertyFbxNodeMesh(PropertyGroup) :
+    def __init__(self, fbxNodeMesh):
+        PropertyGroup.__init__(self, fbxNodeMesh)
+    def SetFbxMeshFile(self, v):
+        self.ComponentBase.SetProperty("FbxNodeMesh", -1, "FbxMeshFile", 0, v)
+    def GetFbxMeshFile(self):
+        return self.ComponentBase.GetProperty("FbxNodeMesh", -1, "FbxMeshFile", 0 )
+    def SetIndependentMaterial(self, v):
+        self.ComponentBase.SetProperty("FbxNodeMesh", -1, "IndependentMaterial", 0, v)
+    def GetIndependentMaterial(self):
+        return self.ComponentBase.GetProperty("FbxNodeMesh", -1, "IndependentMaterial", 0 )
+ 
+===============================
+  
+import EngineFbxNodeBase
+import EngineFbxNodeMesh
+class FbxNodeMesh(FbxNodeBase) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropFbxNodeMesh = PropertyFbxNodeMesh(self)
+        self.PropMaterial = []
+        for i in range(0 , 10):
+            self.PropMaterial.append(PropertyMaterial(self))
+ 
+===============================
+  
+class PropertyScript(PropertyGroup) :
+    def __init__(self, script):
+        PropertyGroup.__init__(self, script)
+    def SetScript(self, v):
+        self.ComponentBase.SetProperty("Script", -1, "Script", 0, v)
+    def GetScript(self):
+        return self.ComponentBase.GetProperty("Script", -1, "Script", 0 )
+ 
+===============================
+  
+import EngineScriptComponent
+class ScriptComponent(ContainerComponent) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropScript = PropertyScript(self)
+    def GetActor(self):
+        return EngineScriptComponent.GetActor(self.UID)
+ 
+Extending Function EngineScriptComponent.GetActor Registered
+===============================
+  
+class PropertyFog(PropertyGroup) :
+    def __init__(self, componentBase) :
+        PropertyGroup.__init__(self, componentBase)
+    def SetFogMode(self, v):
+        self.ComponentBase.SetProperty("Fog", -1, "FogMode", 0, v)
+    def GetFogMode(self):
+        return self.ComponentBase.GetProperty("Fog", -1, "FogMode", 0 )
+    def SetFogNearPlane(self, v):
+        self.ComponentBase.SetProperty("Fog", -1, "FogNearPlane", 0, v)
+    def GetFogNearPlane(self):
+        return self.ComponentBase.GetProperty("Fog", -1, "FogNearPlane", 0 )
+    def SetFogFarPlane(self, v):
+        self.ComponentBase.SetProperty("Fog", -1, "FogFarPlane", 0, v)
+    def GetFogFarPlane(self):
+        return self.ComponentBase.GetProperty("Fog", -1, "FogFarPlane", 0 )
+    def SetFogColor(self, v):
+        self.ComponentBase.SetProperty("Fog", -1, "FogColor", 0, v)
+    def GetFogColor(self):
+        return self.ComponentBase.GetProperty("Fog", -1, "FogColor", 0 )
+ 
+===============================
+  
+import EngineWorld
+class World(ContainerComponent) :
+    def __init__(self, UID):
+        ContainerComponent.__init__(self,UID)
+        self.PropFog = PropertyFog(self)
+    def GetDefaultCamera(self):
+        return EngineWorld.GetDefaultCamera(self.UID )
+    def GetTime(self):
+        return EngineWorld.GetTime(self.UID )
+    def GetFrameElapseTime(self):
+        return EngineWorld.GetFrameElapseTime(self.UID )
+    def TimerSetSpeed(self, arg1):
+        EngineWorld.TimerSetSpeed(self.UID , arg1)
+    def TimerStart(self):
+        EngineWorld.TimerStart(self.UID )
+    def TimerStop(self):
+        EngineWorld.TimerStop(self.UID )
+    def LoadScene(self, arg1):
+        return EngineWorld.LoadScene(self.UID , arg1)
+    def AppendScene(self, arg1):
+        return EngineWorld.AppendScene(self.UID , arg1)
+    def NewScene(self):
+        EngineWorld.NewScene(self.UID )
+ 
+Extending Function EngineWorld.GetDefaultCamera Registered
+Extending Function EngineWorld.GetTime Registered
+Extending Function EngineWorld.GetFrameElapseTime Registered
+Extending Function EngineWorld.TimerSetSpeed Registered
+Extending Function EngineWorld.TimerStart Registered
+Extending Function EngineWorld.TimerStop Registered
+Extending Function EngineWorld.LoadScene Registered
+Extending Function EngineWorld.AppendScene Registered
+Extending Function EngineWorld.NewScene Registered
+===============================
+  
+class PropertySound(PropertyGroup) :
+    def __init__(self, Sound):
+        PropertyGroup.__init__(self, Sound)
+    def SetEventHandler(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "EventHandler", 0, v)
+    def GetEventHandler(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "EventHandler", 0 )
+    def SetSoundFilePath(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "SoundFilePath", 0, v)
+    def GetSoundFilePath(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "SoundFilePath", 0 )
+    def SetEffect(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "Effect", 0, v)
+    def GetEffect(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "Effect", 0 )
+    def SetRepeat(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "Repeat", 0, v)
+    def GetRepeat(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "Repeat", 0 )
+    def SetVolume(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "Volume", 0, v)
+    def GetVolume(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "Volume", 0 )
+    def SetPitch(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "Pitch", 0, v)
+    def GetPitch(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "Pitch", 0 )
+    def SetStartPosition(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "StartPosition", 0, v)
+    def GetStartPosition(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "StartPosition", 0 )
+    def SetEndPosition(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "EndPosition", 0, v)
+    def GetEndPosition(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "EndPosition", 0 )
+    def SetPan(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "Pan", 0, v)
+    def GetPan(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "Pan", 0 )
+    def SetRolloffFactor(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "RolloffFactor", 0, v)
+    def GetRolloffFactor(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "RolloffFactor", 0 )
+    def SetReferenceDistance(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "ReferenceDistance", 0, v)
+    def GetReferenceDistance(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "ReferenceDistance", 0 )
+    def SetMaxDistance(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "MaxDistance", 0, v)
+    def GetMaxDistance(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "MaxDistance", 0 )
+    def SetSoundCacheSize(self, v):
+        self.ComponentBase.SetProperty("Sound", -1, "SoundCacheSize", 0, v)
+    def GetSoundCacheSize(self):
+        return self.ComponentBase.GetProperty("Sound", -1, "SoundCacheSize", 0 )
+ 
+===============================
+  
+import EngineSound
+class Sound(ContainerComponent) :
+    def __init__(self, UID):
+        ContainerComponent.__init__(self, UID)
+        self.PropSound = PropertySound(self)
+    def Play(self):
+        return EngineSound.Play(self.UID )
+    def Stop(self):
+        return EngineSound.Stop(self.UID )
+    def Pause(self):
+        return EngineSound.Pause(self.UID )
+    def Resume(self):
+        return EngineSound.Resume(self.UID )
+    def IsPlaying(self):
+        return EngineSound.IsPlaying(self.UID )
+    def GetPlayTimeMilliSecond(self):
+        return EngineSound.GetPlayTimeMilliSecond(self.UID )
+    def SetProgress(self, arg1):
+        EngineSound.SetProgress(self.UID , arg1)
+    def GetProgress(self):
+        return EngineSound.GetProgress(self.UID )
+    def SetProgressTime(self, arg1):
+        EngineSound.SetProgressTime(self.UID , arg1)
+    def GetProgressTime(self):
+        return EngineSoumd.GetProgressTime(self.UID )
+    def LoadSoundFile(self, arg1, arg2):
+        return EngineSound.LoadSoundFile(self.UID , arg1, arg2)
+ 
+Extending Function EngineSound.Play Registered
+Extending Function EngineSound.Stop Registered
+Extending Function EngineSound.Pause Registered
+Extending Function EngineSound.Resume Registered
+Extending Function EngineSound.IsPlaying Registered
+Extending Function EngineSound.GetPlayTimeMilliSecond Registered
+Extending Function EngineSound.SetProgress Registered
+Extending Function EngineSound.GetProgress Registered
+Extending Function EngineSound.SetProgressTime Registered
+Extending Function EngineSound.GetProgressTime Registered
+Extending Function EngineSound.LoadSoundFile Registered
+===============================
+  
+class PropertyListener(PropertyGroup) :
+    def __init__(self, componentBase) :
+        PropertyGroup.__init__(self, componentBase)
+    def SetEnable(self, v):
+        self.ComponentBase.SetProperty("Listener", -1, "Enable", 0, v)
+    def GetEnable(self):
+        return self.ComponentBase.GetProperty("Listener", -1, "Enable", 0 )
+    def SetGain(self, v):
+        self.ComponentBase.SetProperty("Listener", -1, "Gain", 0, v)
+    def GetGain(self):
+        return self.ComponentBase.GetProperty("Listener", -1, "Gain", 0 )
+    def SetDistanceModel(self, v):
+        self.ComponentBase.SetProperty("Listener", -1, "DistanceModel", 0, v)
+    def GetDistanceModel(self):
+        return self.ComponentBase.GetProperty("Listener", -1, "DistanceModel", 0 )
+ 
+===============================
+  
+import EngineListener
+class Listener(ComponentBase) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropListener = PropertyListener(self)
+ 
+===============================
+  
+class PropertyVRDevice(PropertyGroup) :
+    def __init__(self, componentBase):
+        PropertyVRDevice.__init__(self, componentBase)
+    def SetDeviceID(self, v):
+        self.ComponentBase.SetProperty("VRDevice", -1, "DeviceID", 0, v)
+    def GetDeviceID(self):
+        return self.ComponentBase.GetProperty("VRDevice", -1, "DeviceID", 0 )
+ 
+===============================
+  
+import EngineVRDeviceComponent
+class VRDeviceComponent(ContainerComponent):
+    def __init__(self, UID):
+        ContainerComponent.__init__(self, UID)
+        self.PropVRDevice = PropertyVRDevice(self)
+ 
+===============================
+  
+class PropertyKinectAvatar(PropertyGroup) :
+    def __init__(slef, componentBase):
+        PropertyGroup.__init__(self,componentBase)
+    def SetAvatarPartPos(self, v):
+        self.ComponentBase.SetProperty("KinectAvatar", -1, "AvatarPartPos", 0, v)
+    def GetAvatarPartPos(self):
+        return self.ComponentBase.GetProperty("KinectAvatar", -1, "AvatarPartPos", 0 )
+    def SetAvatarPartAngle(self, v):
+        self.ComponentBase.SetProperty("KinectAvatar", -1, "AvatarPartAngle", 0, v)
+    def GetAvatarPartAngle(self):
+        return self.ComponentBase.GetProperty("KinectAvatar", -1, "AvatarPartAngle", 0 )
+    def SetAvatarPartName(self, v):
+        self.ComponentBase.SetProperty("KinectAvatar", -1, "AvatarPartName", 0, v)
+    def GetAvatarPartName(self):
+        return self.ComponentBase.GetProperty("KinectAvatar", -1, "AvatarPartName", 0 )
+    def SetAvatarIndex(self, v):
+        self.ComponentBase.SetProperty("KinectAvatar", -1, "AvatarIndex", 0, v)
+    def GetAvatarIndex(self):
+        return self.ComponentBase.GetProperty("KinectAvatar", -1, "AvatarIndex", 0 )
+ 
+===============================
+  
+import EngineVRDeviceComponent
+import EngineKinectAvatarComponent
+class KinectAvatarComponent(VRDeviceComponent) :
+    def __init__(self, UID):
+        VRDeviceComponent.__init__(self, UID)
+        self.PropKinectAvatar = []
+        for i in range(0, 25):
+            self.PropKinectAvatar.append(PropertyKinectAvatar(self))
+ 
+===============================
+  
+class PropertyKinectImage(PropertyGroup):
+    def __init__(self, componentBase):
+        PropertyGroup.__init__(self, componentBase)
+    def SetImageType(self, v):
+        self.ComponentBase.SetProperty("KinectImage", -1, "ImageType", 0, v)
+    def GetImageType(self):
+        return self.ComponentBase.GetProperty("KinectImage", -1, "ImageType", 0 )
+    def SetBlueHigh(self, v):
+        self.ComponentBase.SetProperty("KinectImage", -1, "BlueHigh", 0, v)
+    def GetBlueHigh(self):
+        return self.ComponentBase.GetProperty("KinectImage", -1, "BlueHigh", 0 )
+    def SetBlueLow(self, v):
+        self.ComponentBase.SetProperty("KinectImage", -1, "BlueLow", 0, v)
+    def GetBlueLow(self):
+        return self.ComponentBase.GetProperty("KinectImage", -1, "BlueLow", 0 )
+    def SetGreenHigh(self, v):
+        self.ComponentBase.SetProperty("KinectImage", -1, "GreenHigh", 0, v)
+    def GetGreenHigh(self):
+        return self.ComponentBase.GetProperty("KinectImage", -1, "GreenHigh", 0 )
+    def SetGreenLow(self, v):
+        self.ComponentBase.SetProperty("KinectImage", -1, "GreenLow", 0, v)
+    def GetGreenLow(self):
+        return self.ComponentBase.GetProperty("KinectImage", -1, "GreenLow", 0 )
+    def SetRedHigh(self, v):
+        self.ComponentBase.SetProperty("KinectImage", -1, "RedHigh", 0, v)
+    def GetRedHigh(self):
+        return self.ComponentBase.GetProperty("KinectImage", -1, "RedHigh", 0 )
+    def SetRedLow(self, v):
+        self.ComponentBase.SetProperty("KinectImage", -1, "RedLow", 0, v)
+    def GetRedLow(self):
+        return self.ComponentBase.GetProperty("KinectImage", -1, "RedLow", 0 )
+ 
+===============================
+  
+import EngineVRDeviceComponent
+import EngineKinectImageComponent
+class KinectImageComponent(VRDeviceComponent):
+    def __init__(self,UID):
+        VRDeviceComponent(self,UID)
+        self.PropKinectImage = PropertyKinectImage(self)
+ 
+===============================
+  
+class PropertyKinectSkeleton(PropertyGroup):
+    def __init__(self,componentBase):
+        PropertyGroup.__init__(self,componentBase)
+    def SetTracked(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "Tracked", 0, v)
+    def GetTracked(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "Tracked", 0 )
+    def SetLeftHand(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "LeftHand", 0, v)
+    def GetLeftHand(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "LeftHand", 0 )
+    def SetRightHand(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "RightHand", 0, v)
+    def GetRightHand(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "RightHand", 0 )
+    def SetSpineBase(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "SpineBase", 0, v)
+    def GetSpineBase(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "SpineBase", 0 )
+    def SetSpineMid(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "SpineMid", 0, v)
+    def GetSpineMid(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "SpineMid", 0 )
+    def SetNeck(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "Neck", 0, v)
+    def GetNeck(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "Neck", 0 )
+    def SetHead(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "Head", 0, v)
+    def GetHead(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "Head", 0 )
+    def SetShoulderLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "ShoulderLeft", 0, v)
+    def GetShoulderLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "ShoulderLeft", 0 )
+    def SetElbowLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "ElbowLeft", 0, v)
+    def GetElbowLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "ElbowLeft", 0 )
+    def SetWristLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "WristLeft", 0, v)
+    def GetWristLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "WristLeft", 0 )
+    def SetHandLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "HandLeft", 0, v)
+    def GetHandLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "HandLeft", 0 )
+    def SetShoulderRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "ShoulderRight", 0, v)
+    def GetShoulderRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "ShoulderRight", 0 )
+    def SetElbowRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "ElbowRight", 0, v)
+    def GetElbowRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "ElbowRight", 0 )
+    def SetWristRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "WristRight", 0, v)
+    def GetWristRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "WristRight", 0 )
+    def SetHandRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "HandRight", 0, v)
+    def GetHandRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "HandRight", 0 )
+    def SetHipLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "HipLeft", 0, v)
+    def GetHipLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "HipLeft", 0 )
+    def SetKneeLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "KneeLeft", 0, v)
+    def GetKneeLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "KneeLeft", 0 )
+    def SetAnkleLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "AnkleLeft", 0, v)
+    def GetAnkleLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "AnkleLeft", 0 )
+    def SetFootLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "FootLeft", 0, v)
+    def GetFootLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "FootLeft", 0 )
+    def SetHipRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "HipRight", 0, v)
+    def GetHipRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "HipRight", 0 )
+    def SetKneeRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "KneeRight", 0, v)
+    def GetKneeRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "KneeRight", 0 )
+    def SetAnkleRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "AnkleRight", 0, v)
+    def GetAnkleRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "AnkleRight", 0 )
+    def SetFootRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "FootRight", 0, v)
+    def GetFootRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "FootRight", 0 )
+    def SetSpineShoulder(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "SpineShoulder", 0, v)
+    def GetSpineShoulder(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "SpineShoulder", 0 )
+    def SetHandTipLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "HandTipLeft", 0, v)
+    def GetHandTipLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "HandTipLeft", 0 )
+    def SetThumbLeft(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "ThumbLeft", 0, v)
+    def GetThumbLeft(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "ThumbLeft", 0 )
+    def SetHandTipRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "HandTipRight", 0, v)
+    def GetHandTipRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "HandTipRight", 0 )
+    def SetThumbRight(self, v):
+        self.ComponentBase.SetProperty("KinectSkeleton", -1, "ThumbRight", 0, v)
+    def GetThumbRight(self):
+        return self.ComponentBase.GetProperty("KinectSkeleton", -1, "ThumbRight", 0 )
+ 
+===============================
+  
+import EngineVRDeviceComponent
+import EngineKinectSkeletonComponent
+class KinectSkeletonComponent(VRDeviceComponent):
+    def __init__(self,UID):
+        VRDeviceComponent.__init__(self,UID)
+        self.PropSkeleton = []
+        for i in range(0,6):
+            self.PropSkeleton.append(PropertyKinectSkeleton(self))
+ 
+===============================
+  
+class PropertyGBD(PropertyGroup):
+    def __init__(self, componentBase):
+        PropertyGBD.__init__(self, componentBase)
+    def SetGestureGBD(self, v):
+        self.ComponentBase.SetProperty("GBD", -1, "GestureGBD", 0, v)
+    def GetGestureGBD(self):
+        return self.ComponentBase.GetProperty("GBD", -1, "GestureGBD", 0 )
+    def SetUseGBD(self, v):
+        self.ComponentBase.SetProperty("GBD", -1, "UseGBD", 0, v)
+    def GetUseGBD(self):
+        return self.ComponentBase.GetProperty("GBD", -1, "UseGBD", 0 )
+ 
+===============================
+  
+class PropertyGesture(PropertyGroup):
+    def __init__(self, componentBase):
+        PropertyGesture.__init__(self, componentBase)
+    def SetPersonNumber(self, v):
+        self.ComponentBase.SetProperty("Gesture", -1, "PersonNumber", 0, v)
+    def GetPersonNumber(self):
+        return self.ComponentBase.GetProperty("Gesture", -1, "PersonNumber", 0 )
+    def SetGesturePerson(self, v):
+        self.ComponentBase.SetProperty("Gesture", -1, "GesturePerson", 0, v)
+    def GetGesturePerson(self):
+        return self.ComponentBase.GetProperty("Gesture", -1, "GesturePerson", 0 )
+    def SetDetected(self, v):
+        self.ComponentBase.SetProperty("Gesture", -1, "Detected", 0, v)
+    def GetDetected(self):
+        return self.ComponentBase.GetProperty("Gesture", -1, "Detected", 0 )
+    def SetConfidence(self, v):
+        self.ComponentBase.SetProperty("Gesture", -1, "Confidence", 0, v)
+    def GetConfidence(self):
+        return self.ComponentBase.GetProperty("Gesture", -1, "Confidence", 0 )
+    def SetGestureType(self, v):
+        self.ComponentBase.SetProperty("Gesture", -1, "GestureType", 0, v)
+    def GetGestureType(self):
+        return self.ComponentBase.GetProperty("Gesture", -1, "GestureType", 0 )
+    def SetGestureName(self, v):
+        self.ComponentBase.SetProperty("Gesture", -1, "GestureName", 0, v)
+    def GetGestureName(self):
+        return self.ComponentBase.GetProperty("Gesture", -1, "GestureName", 0 )
+ 
+===============================
+  
+import EngineVRDeviceComponent
+import EngineGestureComponent
+class GestureComponent(VRDeviceComponent):
+    def __init__(slef, UID):
+        VRDeviceComponent(self, UID)
+        self.PropGBD = PropertyGBD(self)
+        self.PropGesture = []
+        for i in range(0, 6):
+            self.PropGesture.append(PropertyGesture(slef))
+        self.PropSkeleton = []
+        for i in range(0, 6):
+            self.PropSkeleton.append(PropertyKinectSkeleton(self))
+ 
+===============================
+  
+import EngineVRDeviceComponent
+import EngineMotionDeviceComponent
+class MotionDeviceComponent(VRDeviceComponent):
+    def __init__(self,UID):
+        VRDeviceComponent.__init__(self,UID)
+ 
+===============================
+  
+class PropertyNeuron(PropertyGroup):
+    def __init__(self, componentBase):
+        PropertyGroup.__init__(self, componentBase)
+    def SetNeuronBonePos(self, v):
+        self.ComponentBase.SetProperty("Neuron", -1, "NeuronBonePos", 0, v)
+    def GetNeuronBonePos(self):
+        return self.ComponentBase.GetProperty("Neuron", -1, "NeuronBonePos", 0 )
+    def SetNeuronBoneAngle(self, v):
+        self.ComponentBase.SetProperty("Neuron", -1, "NeuronBoneAngle", 0, v)
+    def GetNeuronBoneAngle(self):
+        return self.ComponentBase.GetProperty("Neuron", -1, "NeuronBoneAngle", 0 )
+ 
+===============================
+  
+import EngineVRDeviceComponent
+import EngineNeuronComponent
+class NeuronComponent(VRDeviceComponent):
+    def __init__(self,UID):
+        VRDeviceComponent.__init__(self,UID)
+        self.PropNeuron = []
+        for i in range(0, 59):
+            self.PropNeuron.append(PropertyNeuron(self))
+ 
+===============================
+  
+import EngineComponent
+def GetWorldContainer() :
+    id = EngineComponent.GetWorldContainer(0)
+    if (id != 0) :
+        return Container(id)
+    else :
+        return None
+ 
+Extending Function EngineComponent.GetWorldContainer Registered
+===============================
+  
+import EngineCodeFarmComponent
+class CodeFarmComponent(ContainerComponent) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+    def StartServer(self):
+        EngineCodeFarmComponent.StartServer(self.UID )
+    def CloseServer(self):
+        EngineCodeFarmComponent.CloseServer(self.UID )
+    def SetCodeFarmPort(self, arg1):
+        EngineCodeFarmComponent.SetCodeFarmPort(self.UID , arg1)
+    def GetCodeFarmPort(self):
+        return EngineCodeFarmComponent.GetCodeFarmPort(self.UID )
+    def IsConnect(self):
+        return EngineCodeFarmComponent.IsConnect(self.UID )
+    def SendSocketHeader(self, arg1):
+        EngineCodeFarmComponent.SendSocketHeader(self.UID , arg1)
+    def SendSocketData(self, arg1, arg2):
+        EngineCodeFarmComponent.SendSocketData(self.UID , arg1, arg2)
+ 
+Extending Function EngineCodeFarmComponent.StartServer Registered
+Extending Function EngineCodeFarmComponent.CloseServer Registered
+Extending Function EngineCodeFarmComponent.SetCodeFarmPort Registered
+Extending Function EngineCodeFarmComponent.GetCodeFarmPort Registered
+Extending Function EngineCodeFarmComponent.IsConnect Registered
+Extending Function EngineCodeFarmComponent.SendSocketHeader Registered
+Extending Function EngineCodeFarmComponent.SendSocketData Registered
+===============================
+  
+import EngineFileTool
+ 
+Extending Function EngineFileTool.GetProjectPath Registered
+===============================
+  
+class PropertyCustomMesh(PropertyGroup) :
+    def __init__(self, CustomMesh):
+        PropertyGroup.__init__(self, CustomMesh)
+    def SetVertexShader(self, v):
+        self.ComponentBase.SetProperty("CustomMesh", -1, "VertexShader", 0, v)
+    def GetVertexShader(self):
+        return self.ComponentBase.GetProperty("CustomMesh", -1, "VertexShader", 0 )
+    def SetPixelShader(self, v):
+        self.ComponentBase.SetProperty("CustomMesh", -1, "PixelShader", 0, v)
+    def GetPixelShader(self):
+        return self.ComponentBase.GetProperty("CustomMesh", -1, "PixelShader", 0 )
+    def SetTextureDiffuse(self, v):
+        self.ComponentBase.SetProperty("CustomMesh", -1, "TextureDiffuse", 0, v)
+    def GetTextureDiffuse(self):
+        return self.ComponentBase.GetProperty("CustomMesh", -1, "TextureDiffuse", 0 )
+ 
+===============================
+  
+import EngineCustomMesh
+class CustomMesh(ContainerComponent) :
+    def __init__(self, UID):
+        ContainerComponent.__init__(self, UID)
+        self.PropCustomMesh = PropertyCustomMesh(self)
+    def SetPrimitiveCount(self, PrimitiveCount):
+        return EngineCustomMesh.SetPrimitiveCount(self.UID, PrimitiveCount)
+    def SetPositions(self, Positions):
+        return EngineCustomMesh.SetPositions(self.UID, Positions)
+    def SetNormals(self, Normals):
+        return EngineCustomMesh.SetNormals(self.UID, Normals)
+    def SetTangents(self, Tangents):
+        return EngineCustomMesh.SetTangents(self.UID, Tangents)
+    def SetIndices(self, Indices):
+        return EngineCustomMesh.SetIndices(self.UID, Indices)
+    def SetUVs(self, UVs):
+        return EngineCustomMesh.SetUVs(self.UID, UVs)
+    def SetDiffuses(self, Diffuses):
+        return EngineCustomMesh.SetDiffuses(self.UID, Diffuses)
+    def UpdateVertexBuffer(self):
+        return EngineCustomMesh.UpdateVertexBuffer(self.UID)
+ 
+Extending Function EngineCustomMesh.SetPrimitiveCount Registered
+Extending Function EngineCustomMesh.SetPositions Registered
+Extending Function EngineCustomMesh.SetNormals Registered
+Extending Function EngineCustomMesh.SetTangents Registered
+Extending Function EngineCustomMesh.SetIndices Registered
+Extending Function EngineCustomMesh.SetUVs Registered
+Extending Function EngineCustomMesh.SetDiffuses Registered
+Extending Function EngineCustomMesh.UpdateVertexBuffer Registered
+===============================
+  
+class PropertyEGuiWidget(PropertyGroup) :
+    def __init__(self, EGuiWidget):
+        PropertyGroup.__init__(self, EGuiWidget)
+    def SetWidth(self, v):
+        self.ComponentBase.SetProperty("EGuiWidget", -1, "Width", 0, v)
+    def GetWidth(self):
+        return self.ComponentBase.GetProperty("EGuiWidget", -1, "Width", 0 )
+    def SetHeight(self, v):
+        self.ComponentBase.SetProperty("EGuiWidget", -1, "Height", 0, v)
+    def GetHeight(self):
+        return self.ComponentBase.GetProperty("EGuiWidget", -1, "Height", 0 )
+    def SetDepth(self, v):
+        self.ComponentBase.SetProperty("EGuiWidget", -1, "Depth", 0, v)
+    def GetDepth(self):
+        return self.ComponentBase.GetProperty("EGuiWidget", -1, "Depth", 0 )
+    def SetColors(self, v):
+        self.ComponentBase.SetProperty("EGuiWidget", -1, "Colors", 0, v)
+    def GetColors(self):
+        return self.ComponentBase.GetProperty("EGuiWidget", -1, "Colors", 0 )
+    def SetAspectSource(self, v):
+        self.ComponentBase.SetProperty("EGuiWidget", -1, "AspectSource", 0, v)
+    def GetAspectSource(self):
+        return self.ComponentBase.GetProperty("EGuiWidget", -1, "AspectSource", 0 )
+ 
+===============================
+  
+import EngineEGuiWidget
+class EGuiWidget(ContainerComponent) :
+    def __init__(self, UID):
+        ContainerComponent.__init__(self, UID)
+        self.PropertyEGuiWidget = PropertyEGuiWidget(self)
+ 
+===============================
+  
+class PropertyEGuiLabel(PropertyGroup) :
+    def __init__(self, EGuiLabel):
+        PropertyGroup.__init__(self, EGuiLabel)
+    def SetText(self, v):
+        self.ComponentBase.SetProperty("EGuiLabel", -1, "Text", 0, v)
+    def GetText(self):
+        return self.ComponentBase.GetProperty("EGuiLabel", -1, "Text", 0 )
+    def SetSpacingX(self, v):
+        self.ComponentBase.SetProperty("EGuiLabel", -1, "SpacingX", 0, v)
+    def GetSpacingX(self):
+        return self.ComponentBase.GetProperty("EGuiLabel", -1, "SpacingX", 0 )
+    def SetSpacingY(self, v):
+        self.ComponentBase.SetProperty("EGuiLabel", -1, "SpacingY", 0, v)
+    def GetSpacingY(self):
+        return self.ComponentBase.GetProperty("EGuiLabel", -1, "SpacingY", 0 )
+    def SetMaxLineCount(self, v):
+        self.ComponentBase.SetProperty("EGuiLabel", -1, "MaxLineCount", 0, v)
+    def GetMaxLineCount(self):
+        return self.ComponentBase.GetProperty("EGuiLabel", -1, "MaxLineCount", 0 )
+    def SetFontSize(self, v):
+        self.ComponentBase.SetProperty("EGuiLabel", -1, "FontSize", 0, v)
+    def GetFontSize(self):
+        return self.ComponentBase.GetProperty("EGuiLabel", -1, "FontSize", 0 )
+    def SetFontStyle(self, v):
+        self.ComponentBase.SetProperty("EGuiLabel", -1, "FontStyle", 0, v)
+    def GetFontStyle(self):
+        return self.ComponentBase.GetProperty("EGuiLabel", -1, "FontStyle", 0 )
+    def SetFontAllignment(self, v):
+        self.ComponentBase.SetProperty("EGuiLabel", -1, "FontAllignment", 0, v)
+    def GetFontAllignment(self):
+        return self.ComponentBase.GetProperty("EGuiLabel", -1, "FontAllignment", 0 )
+ 
+===============================
+  
+import EngineEGuiLabel
+class EGuiLabel(EGuiWidget) :
+    def __init__(self, UID):
+        EGuiWidget.__init__(self, UID)
+        self.PropertyEGuiLabel = PropertyEGuiLabel(self)
+ 
+===============================
+  
+class PropertyEGuiTexture(PropertyGroup) :
+    def __init__(self, EGuiTexture):
+        PropertyGroup.__init__(self, EGuiTexture)
+    def SetBorder(self, v):
+        self.ComponentBase.SetProperty("EGuiTexture", -1, "Border", 0, v)
+    def GetBorder(self):
+        return self.ComponentBase.GetProperty("EGuiTexture", -1, "Border", 0 )
+    def SetPixelPerfect(self, v):
+        self.ComponentBase.SetProperty("EGuiTexture", -1, "PixelPerfect", 0, v)
+    def GetPixelPerfect(self):
+        return self.ComponentBase.GetProperty("EGuiTexture", -1, "PixelPerfect", 0 )
+    def SetTextureFile(self, v):
+        self.ComponentBase.SetProperty("EGuiTexture", -1, "TextureFile", 0, v)
+    def GetTextureFile(self):
+        return self.ComponentBase.GetProperty("EGuiTexture", -1, "TextureFile", 0 )
+ 
+===============================
+  
+import EngineEGuiTexture
+class EGuiTexture(EGuiWidget) :
+    def __init__(self, UID):
+        EGuiWidget.__init__(self, UID)
+        self.PropertyEGuiTexture = PropertyEGuiTexture(self)
+ 
+===============================
+  
+class EGuiProgressBarPropertyUI(PropertyGroup) :
+    def __init__(self, EGuiProgressBar):
+        PropertyGroup.__init__(self, EGuiProgressBar)
+    def SetValue(self, v):
+        self.ComponentBase.SetProperty("EGuiProgressBar", -1, "Value", 0, v)
+    def GetValue(self):
+        return self.ComponentBase.GetProperty("EGuiProgressBar", -1, "Value", 0 )
+    def SetAlpha(self, v):
+        self.ComponentBase.SetProperty("EGuiProgressBar", -1, "Alpha", 0, v)
+    def GetAlpha(self):
+        return self.ComponentBase.GetProperty("EGuiProgressBar", -1, "Alpha", 0 )
+    def SetForward(self, v):
+        self.ComponentBase.SetProperty("EGuiProgressBar", -1, "Forward", 0, v)
+    def GetForward(self):
+        return self.ComponentBase.GetProperty("EGuiProgressBar", -1, "Forward", 0 )
+    def SetBack(self, v):
+        self.ComponentBase.SetProperty("EGuiProgressBar", -1, "Back", 0, v)
+    def GetBack(self):
+        return self.ComponentBase.GetProperty("EGuiProgressBar", -1, "Back", 0 )
+ 
+===============================
+  
+import EngineEGuiProgressBar
+class EGuiProgressBar(ContainerComponent) :
+    def __init__(self, UID):
+        ContainerComponent.__init__(self, UID)
+        self.EGuiProgressBarPropertyUI = EGuiProgressBarPropertyUI(self)
+ 
+===============================
+  
+class PropertyEGuiSlider(PropertyGroup) :
+    def __init__(self, EGuiSlider):
+        PropertyGroup.__init__(self, EGuiSlider)
+    def SetValue(self, v):
+        self.ComponentBase.SetProperty("EGuiProgressBar", -1, "Value", 0, v)
+    def GetValue(self):
+        return self.ComponentBase.GetProperty("EGuiProgressBar", -1, "Value", 0 )
+    def SetAlpha(self, v):
+        self.ComponentBase.SetProperty("EGuiProgressBar", -1, "Alpha", 0, v)
+    def GetAlpha(self):
+        return self.ComponentBase.GetProperty("EGuiProgressBar", -1, "Alpha", 0 )
+    def SetForward(self, v):
+        self.ComponentBase.SetProperty("EGuiProgressBar", -1, "Forward", 0, v)
+    def GetForward(self):
+        return self.ComponentBase.GetProperty("EGuiProgressBar", -1, "Forward", 0 )
+    def SetBack(self, v):
+        self.ComponentBase.SetProperty("EGuiProgressBar", -1, "Back", 0, v)
+    def GetBack(self):
+        return self.ComponentBase.GetProperty("EGuiProgressBar", -1, "Back", 0 )
+ 
+===============================
+  
+import EngineEGuiSlider
+class EGuiSlider(EGuiProgressBar) :
+    def __init__(self, UID):
+        EGuiProgressBar.__init__(self, UID)
+        self.PropertyEGuiSlider = PropertyEGuiSlider(self)
+ 
+===============================
+  
+class EGuiButtonPropertyUI(PropertyGroup) :
+    def __init__(self, EGuiButton):
+        PropertyGroup.__init__(self, EGuiButton)
+    def SetHover(self, v):
+        self.ComponentBase.SetProperty("EGUIButton", -1, "Hover", 0, v)
+    def GetHover(self):
+        return self.ComponentBase.GetProperty("EGUIButton", -1, "Hover", 0 )
+    def SetPressed(self, v):
+        self.ComponentBase.SetProperty("EGUIButton", -1, "Pressed", 0, v)
+    def GetPressed(self):
+        return self.ComponentBase.GetProperty("EGUIButton", -1, "Pressed", 0 )
+    def SetDisabled(self, v):
+        self.ComponentBase.SetProperty("EGUIButton", -1, "Disabled", 0, v)
+    def GetDisabled(self):
+        return self.ComponentBase.GetProperty("EGUIButton", -1, "Disabled", 0 )
+    def SetNormal(self, v):
+        self.ComponentBase.SetProperty("EGUIButton", -1, "Normal", 0, v)
+    def GetNormal(self):
+        return self.ComponentBase.GetProperty("EGUIButton", -1, "Normal", 0 )
+    def SetTweenHoverType(self, v):
+        self.ComponentBase.SetProperty("EGUIButton", -1, "TweenHoverType", 0, v)
+    def GetTweenHoverType(self):
+        return self.ComponentBase.GetProperty("EGUIButton", -1, "TweenHoverType", 0 )
+    def SetTweenClickType(self, v):
+        self.ComponentBase.SetProperty("EGUIButton", -1, "TweenClickType", 0, v)
+    def GetTweenClickType(self):
+        return self.ComponentBase.GetProperty("EGUIButton", -1, "TweenClickType", 0 )
+ 
+===============================
+  
+import EngineEGuiButton
+class EGuiButton(ContainerComponent) :
+    def __init__(self, UID):
+        ContainerComponent.__init__(self, UID)
+        self.EGuiButtonPropertyUI = EGuiButtonPropertyUI(self)
+ 
+===============================
+  
+class PropertyColorFilter(PropertyGroup) :
+    def __init__(self, componentBase) :
+        PropertyGroup.__init__(self, componentBase)
+    def SetFilterSwitch(self, v):
+        self.ComponentBase.SetProperty("ColorFilter", -1, "FilterSwitch", 0, v)
+    def GetFilterSwitch(self):
+        return self.ComponentBase.GetProperty("ColorFilter", -1, "FilterSwitch", 0 )
+    def SetEnabled(self, v):
+        self.ComponentBase.SetProperty("ColorFilter", -1, "Enabled", 0, v)
+    def GetEnabled(self):
+        return self.ComponentBase.GetProperty("ColorFilter", -1, "Enabled", 0 )
+ 
+===============================
+  
+import EngineColorFilter
+class ColorFilter(ComponentBase) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropColorFilter = PropertyColorFilter(self)
+ 
+===============================
+  
+class PropertyBlur(PropertyGroup) :
+    def __init__(self, componentBase) :
+        PropertyGroup.__init__(self, componentBase)
+    def SetBlurIteration(self, v):
+        self.ComponentBase.SetProperty("Blur", -1, "BlurIteration", 0, v)
+    def GetBlurIteration(self):
+        return self.ComponentBase.GetProperty("Blur", -1, "BlurIteration", 0 )
+    def SetSampleCount(self, v):
+        self.ComponentBase.SetProperty("Blur", -1, "SampleCount", 0, v)
+    def GetSampleCount(self):
+        return self.ComponentBase.GetProperty("Blur", -1, "SampleCount", 0 )
+    def SetEnabled(self, v):
+        self.ComponentBase.SetProperty("Blur", -1, "Enabled", 0, v)
+    def GetEnabled(self):
+        return self.ComponentBase.GetProperty("Blur", -1, "Enabled", 0 )
+ 
+===============================
+  
+import EngineBlur
+class Blur(ComponentBase) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropBlur = PropertyBlur(self)
+ 
+===============================
+  
+class PropertyBloom(PropertyGroup) :
+    def __init__(self, componentBase) :
+        PropertyGroup.__init__(self, componentBase)
+    def SetSampleCount(self, v):
+        self.ComponentBase.SetProperty("Bloom", -1, "SampleCount", 0, v)
+    def GetSampleCount(self):
+        return self.ComponentBase.GetProperty("Bloom", -1, "SampleCount", 0 )
+    def SetBloomThreshold(self, v):
+        self.ComponentBase.SetProperty("Bloom", -1, "BloomThreshold", 0, v)
+    def GetBloomThreshold(self):
+        return self.ComponentBase.GetProperty("Bloom", -1, "BloomThreshold", 0 )
+    def SetBloomIntensity(self, v):
+        self.ComponentBase.SetProperty("Bloom", -1, "BloomIntensity", 0, v)
+    def GetBloomIntensity(self):
+        return self.ComponentBase.GetProperty("Bloom", -1, "BloomIntensity", 0 )
+    def SetBloomSaturation(self, v):
+        self.ComponentBase.SetProperty("Bloom", -1, "BloomSaturation", 0, v)
+    def GetBloomSaturation(self):
+        return self.ComponentBase.GetProperty("Bloom", -1, "BloomSaturation", 0 )
+    def SetEnabled(self, v):
+        self.ComponentBase.SetProperty("Bloom", -1, "Enabled", 0, v)
+    def GetEnabled(self):
+        return self.ComponentBase.GetProperty("Bloom", -1, "Enabled", 0 )
+ 
+===============================
+  
+import EngineBloom
+class Bloom(ComponentBase) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropBloom = PropertyBloom(self)
+ 
+===============================
+  
+class PropertyAntiAliasing(PropertyGroup) :
+    def __init__(self, componentBase) :
+        PropertyGroup.__init__(self, componentBase)
+    def SetEnabled(self, v):
+        self.ComponentBase.SetProperty("AntiAliasing", -1, "Enabled", 0, v)
+    def GetEnabled(self):
+        return self.ComponentBase.GetProperty("AntiAliasing", -1, "Enabled", 0 )
+ 
+===============================
+  
+import EngineAntiAliasing
+class AntiAliasing(ComponentBase) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropAntiAliasing = PropertyAntiAliasing(self)
+ 
+===============================
+  
+class PropertyDepthOfField(PropertyGroup) :
+    def __init__(self, componentBase) :
+        PropertyGroup.__init__(self, componentBase)
+    def SetEnabled(self, v):
+        self.ComponentBase.SetProperty("DepthOfField", -1, "Enabled", 0, v)
+    def GetEnabled(self):
+        return self.ComponentBase.GetProperty("DepthOfField", -1, "Enabled", 0 )
+    def SetFocusingDistance(self, v):
+        self.ComponentBase.SetProperty("DepthOfField", -1, "FocusingDistance", 0, v)
+    def GetFocusingDistance(self):
+        return self.ComponentBase.GetProperty("DepthOfField", -1, "FocusingDistance", 0 )
+    def SetFocalSize(self, v):
+        self.ComponentBase.SetProperty("DepthOfField", -1, "FocalSize", 0, v)
+    def GetFocalSize(self):
+        return self.ComponentBase.GetProperty("DepthOfField", -1, "FocalSize", 0 )
+ 
+===============================
+  
+import EngineDepthOfField
+class DepthOfField(ComponentBase) :
+    def __init__(self, UID):
+        ComponentBase.__init__(self, UID)
+        self.PropDepthOfField = PropertyDepthOfField(self)

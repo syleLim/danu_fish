@@ -1,0 +1,153 @@
+Report Uniform Parameter 
+  Vertex Shader (Background) 
+  Pixel Shader (Background) 
+    ViewProj : Index=1 Type=float4x4 Value=-0.89396298,0.0,0.89396298,0.0,-0.44480065,2.22400308,-0.44480065,0.00000055,-0.68043083,-0.27217239,-0.68043083,7.2986517,-0.68041378,-0.27216557,-0.68041378,7.34846878
+    CameraPos : Index=7 Type=float4 Value=5.0,2.0,5.0,0.0
+    ViewProjInverse : Index=0 Type=float4x4 Value=-0.55931705,-0.08326779,-99.99837494,99.32045746,-0.0,0.41633812,-39.99934387,39.72817993,0.55931461,-0.08326708,-99.99837494,99.32045746,-0.0,-0.0000001,-19.99967575,20.00017548
+    CameraDir : Index=6 Type=float4 Value=-0.68041384,-0.2721656,-0.68041378,0.0
+    FarPlane : Index=9 Type=float4 Value=2000.0,0.0,0.0,0.0
+    BackgroundSunMatrix : Index=10 Type=float4x4 Value=-0.70710671,0.0,-0.70710689,-0.0,-0.40824839,0.81649655,0.40824828,-0.0,0.57735032,0.57735032,-0.5773502,-0.0,0.0,0.0,0.0,1.0
+    BackgroundSunSize : Index=11 Type=float4 Value=0.05,0.05,0.05,0.0
+    Orthographic : Index=3 Type=float4 Value=0.0,0.0,0.0,0.0
+    DrawGrid : Index=4 Type=float4 Value=0.0,0.0,0.0,0.0
+    BackgroundType : Index=2 Type=float4 Value=2.0,0.0,0.0,0.0
+    GridInfo : Index=8 Type=float4 Value=2.0,0.5,0.0,0.0
+    BackColor : Index=5 Type=float4 Value=0.1,0.1,0.2,1.0
+    BackgroundGamma : Index=14 Type=float4 Value=1.0,0.0,0.0,0.0
+    BackgroundMipMapInfo : Index=13 Type=float4 Value=1.0,0.0,11.0,0.0
+    EnvMapProjection : Index=12 Type=float4 Value=3.0,1.0,0.0,11.0
+Rebuilding Tangent Space for 12 Polygons
+Loading Actor Python $project/Assets/box_move.py
+Loading Actor Python $project/Assets/fish_moving.py
+Rebuilding Tangent Space for 2431 Polygons
+Loading Actor Python $project/Assets/bubble_move.py
+Compile Shaders ... DefaultFrame - TestFrameRed
+Cannot Load Pixel Shader File TestFrameRed D:/Danuri-VR/enginedata/hls11/TestFrameRed.Pixel.hls
+Resource::Shader Compile Error TestFrameRed
+
+Shader Build Finished.
+Resource::Shader Program Compile Error DefaultFrame TestFrameRed
+
+Compile Shaders ... DefaultFrame - TestFrameRedPBR
+Cannot Load Pixel Shader File TestFrameRedPBR D:/Danuri-VR/enginedata/hls11/TestFrameRedPBR.Pixel.hls
+Resource::Shader Compile Error TestFrameRedPBR
+
+Shader Build Finished.
+Resource::Shader Program Compile Error DefaultFrame TestFrameRedPBR
+
+Rebuilding Tangent Space for 2 Polygons
+Open Texture Assets/underwater.jpg
+Open Texture Temp/Converted/Assets_underwater.png
+CreateTexture2D11 - w = 512, h = 256, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Texture.jpg
+CreateTexture2D11 - w = 64, h = 64, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Rebuilding Tangent Space for 2 Polygons
+Open Texture Assets/underwater.jpg
+Open Texture Temp/Converted/Assets_underwater.png
+CreateTexture2D11 - w = 512, h = 256, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/water_1.jpg
+CreateTexture2D11 - w = 512, h = 512, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/water_normal_1.jpg
+CreateTexture2D11 - w = 512, h = 512, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/water_1.jpg
+CreateTexture2D11 - w = 512, h = 512, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/water_normal_1.jpg
+CreateTexture2D11 - w = 512, h = 512, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/PLAQUETA_BISELADO_BLANCO_diffuse.jpg
+CreateTexture2D11 - w = 2048, h = 2048, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/PLAQUETA_BISELADO_BLANCO_bump.jpg
+CreateTexture2D11 - w = 2048, h = 2048, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/PLAQUETA_BISELADO_BLANCO_normal.jpg
+CreateTexture2D11 - w = 2048, h = 2048, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/PLAQUETA_BISELADO_BLANCO_specular.jpg
+CreateTexture2D11 - w = 2048, h = 2048, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/PLAQUETA_BISELADO_BLANCO_glossiness.jpg
+CreateTexture2D11 - w = 2048, h = 2048, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Loading Actor Python $project/Assets/box_move.py
+Loading Actor Python $project/Assets/fish_moving.py
+Rebuilding Tangent Space for 2431 Polygons
+Loading Actor Python $project/Assets/bubble_move.py
+Open Texture Assets/underwater.jpg
+Open Texture Temp/Converted/Assets_underwater.png
+CreateTexture2D11 - w = 512, h = 256, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/water_1.jpg
+CreateTexture2D11 - w = 512, h = 512, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Open Texture Assets/water_normal_1.jpg
+CreateTexture2D11 - w = 512, h = 512, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+Report Uniform Parameter 
+  Vertex Shader (Default) 
+    MatrixPalette : Index=18 Type=float4x4 Value= <Not Assigned>
+    ShadowMapInfo : Index=14 Type=float4 Value=0.0,0.05,0.0,1.0
+    ShadowMapInfo2 : Index=15 Type=float4 Value=0.001,1.0,0.0,0.0
+    ShadowInfo : Index=13 Type=float4 Value=0.5,1.0,1.0,0.0
+    View : Index=3 Type=float4x4 Value=1.0,-0.0,0.0,-0.0,0.0,0.0,-1.0,-6.92883825,0.0,1.0,0.0,4.10582352,0.0,0.0,0.0,1.0...
+    World : Index=1 Type=float4x4 Value=60.0,0.0,0.0,0.0,0.0,-0.1,0.00000525,26.55412674,0.0,-0.00000001,-60.0,0.0,0.0,0.0...
+    Proj : Index=4 Type=float4x4 Value=1.26425457,0.0,0.0,0.0,0.0,2.31125164,0.0,0.0,0.0,0.0,1.00002503,-0.05000125,0.0,0.0...
+    UVInfo : Index=16 Type=float4 Value=0.0,0.0,1.0,1.0
+    ViewProj : Index=0 Type=float4x4 Value=1.26425457,0.0,0.0,0.0,0.0,0.0,-2.31125164,-16.01428795,0.0,1.00002503,0.0,4.05592537...
+    CameraPos : Index=5 Type=float4 Value=0.0,-4.10582352,-6.92883825,0.0
+    DrawPhase : Index=7 Type=float4 Value=0.0,0.0,0.0,0.0
+    SunLight : Index=6 Type=float4 Value=-0.57735032,-0.57735032,0.5773502,0.0
+    WorldInverse : Index=2 Type=float4x4 Value=0.01666667,-0.0,0.0,-0.0,-0.0,-10.0,-0.00000087,265.54125977,0.0,0.0,-0.01666667,-0.00000004...
+    UseMatrixPalette : Index=17 Type=float4 Value=0.0,0.0,0.0,0.0
+  Pixel Shader (Default) 
+    LightFactorSpotDirection : Index=19 Type=float4 Value=0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+    ShadowMapInfo : Index=3 Type=float4 Value=0.0,0.05,0.0,1.0
+    ShadowMapInfo2 : Index=4 Type=float4 Value=0.001,1.0,0.0,0.0
+    SoftShadowInfo : Index=5 Type=float4 Value= <Not Assigned>
+    ShadowInfo : Index=2 Type=float4 Value=0.5,1.0,1.0,0.0
+    StaticSoftShadowInfo : Index=9 Type=float4 Value= <Not Assigned>
+    Opacity : Index=21 Type=float4 Value=0.40000001,0.0,0.0,0.0
+    NormalMapDirection : Index=25 Type=float4 Value=1.0,1.0,1.0,1.0
+    AmbientColorRate : Index=14 Type=float4 Value=0.0,0.0,0.0,0.0
+    MaterialSpecular : Index=11 Type=float4 Value=0.2,0.0,0.0,0.0
+    CameraPos : Index=16 Type=float4 Value=0.0,-4.10582352,-6.92883825,0.0
+    DrawPhase : Index=0 Type=float4 Value=0.0,0.0,0.0,0.0
+    AmbientColor : Index=13 Type=float4 Value=1.0,1.0,1.0,1.0
+    MaterialAmbient : Index=10 Type=float4 Value=0.60000002,0.0,0.0,0.0
+    SoftShadowInfo2 : Index=6 Type=float4 Value= <Not Assigned>
+    AlphaTest : Index=28 Type=float4 Value=0.0,0.0,0.0,0.0
+    SoftShadowInfo4 : Index=8 Type=float4 Value= <Not Assigned>
+    Glossiness : Index=15 Type=float4 Value=0.0,0.0,0.0,0.0
+    ClipPlane : Index=1 Type=float4 Value=0.0,0.0,0.0,340282346638528859811704183484516925440.0
+    SoftShadowInfo3 : Index=7 Type=float4 Value= <Not Assigned>
+    SunLight : Index=24 Type=float4 Value=-0.57735032,-0.57735032,0.5773502,0.0
+    FogFactor : Index=22 Type=float4 Value=0.0,0.0,100.0,0.0
+    MaterialDiffuse : Index=12 Type=float4 Value=1.0,0.0,0.0,0.0
+    FocusingDistance : Index=37 Type=float4 Value=5.0,0.0,0.0,0.0
+    LightFactor : Index=18 Type=float4 Value=0.0,40.0,0.0,2.0,0.0,23.48613167,0.0,2.0,-0.57735032,-0.57735032,0.5773502,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+    DOFEnable : Index=39 Type=float4 Value=0.0,0.0,0.0,0.0
+    BackgroundType : Index=29 Type=float4 Value=2.0,0.0,0.0,0.0
+    FarClamp : Index=38 Type=float4 Value=1.0,0.0,0.0,0.0
+    FocalSize : Index=34 Type=float4 Value=0.0,0.0,0.0,0.0
+    LightFactorSpotFactor : Index=20 Type=float4 Value=0.0,0.0,0.0,60.0,0.0,0.0,0.0,23.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+    FogColor : Index=23 Type=float4 Value=1.0,1.0,1.0,1.0
+    LightColor : Index=17 Type=float4 Value=4.0,4.0,4.0,0.0,5.0,5.0,5.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+    ShadingModel : Index=26 Type=float4 Value=0.0,0.0,0.0,0.0
+    DiffuseColor : Index=27 Type=float4 Value=0.0,0.0,0.0,0.0
+    FocalDistance : Index=33 Type=float4 Value= <Not Assigned>
+    TextureGamma : Index=35 Type=float4 Value=1.0,0.0,0.0,0.0
+    InternalMipMapInfo : Index=30 Type=float4 Value=0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+    EnvMapProjection : Index=31 Type=float4 Value=3.0,1.0,0.0,11.0
+    EnvironmentGamma : Index=36 Type=float4 Value=1.0,0.0,0.0,0.0
+    TextureUVTransform : Index=32 Type=float4 Value=0.0,0.0,1.0,1.0
+Open Texture Gizmo.jpg
+CreateTexture2D11 - w = 128, h = 128, MipLevels = 1, Format = DYNAMIC
+CreateShaderSource11Texture2D - MipLevels = 1 MostDetailedMip = 0
+CullStatus 27 / 89 / 87 / 89 / 0 (Pass/Visible/Box/Check/Occlusion)
+CullStatus 73 / 125 / 123 / 125 / 0 (Pass/Visible/Box/Check/Occlusion)
