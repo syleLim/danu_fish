@@ -16,6 +16,6 @@ class box_move(Actor.Actor):
 	def Update(self):
 		self.time += self.world.GetFrameElapseTime()*5 
 
-		pos = Math3d.Vector3(self.pre_pos.x, self.pre_pos.y, math.sin(self.time) + self.pre_pos.z) 
+		pos = Math3d.Vector3(math.sin(self.time) + self.pre_pos.x, self.pre_pos.y, self.pre_pos.z) 
 
 		self.t.SetPosition(pos)

@@ -1,24 +1,17 @@
 Crash Information : 
-Danuri-VR.exe caused an  in module KERNELBASE.dll at 0023:74A408B2, RaiseException()+0098 byte(s)
+Danuri-VR.exe caused an EXCEPTION_ACCESS_VIOLATION in module VRCAT.Wrapper.dll at 0023:1252019A, Code3::Resource::Texture::LoadPSD()+0858 byte(s), c:\evrat\frontline\platform\resource\texture\base\texturetype\texturepsd.cpp, line 0094+0021 byte(s)
 
 Register Information : 
-EAX=014FB530  EBX=00000005  ECX=00000005  EDX=00000000  ESI=014FB5F0
-EDI=00000001  EBP=014FB588  ESP=014FB530  EIP=74A408B2  FLG=00200216
+EAX=2CAAC020  EBX=00000000  ECX=1DCE70A0  EDX=FFFFF8F0  ESI=FFFFFF8F
+EDI=2C63F020  EBP=0075E324  ESP=0075DE00  EIP=1252019A  FLG=00210287
 CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
 
 Stack Trace : 
-0023:74A408B2 (0xE0434352 0xFFFFFFFF 0x00000001 0x00000000) KERNELBASE.dll, RaiseException()+0098 byte(s)
-0023:735880E2 (0x00000000 0x00000000 0x9D267471 0xFFFFFFFF) clr.dll, GetPrivateContextsPerfCounters()+67842 byte(s)
-0023:735882E8 (0x9C1F308F 0xFFFFFFFF 0x733EF9F8 0x00000000) clr.dll, GetPrivateContextsPerfCounters()+68360 byte(s)
-0023:67F0D133 (0x055CA830 0x00000000 0x055CAD8C 0x00000000) PresentationCore.ni.dll
-0023:6773AFC8 (0x00000001 0x00000000 0x055CAD8C 0x00000000) PresentationCore.ni.dll
-0023:6774F506 (0x6773BCB0 0x00000000 0x0641B994 0x00000000) PresentationCore.ni.dll
-0023:67754559 (0x014FBD6C 0x00000000 0x00000000 0x00000000) PresentationCore.ni.dll
-0023:6773A039 (0x2AEF0BD4 0x00000000 0x014FBD6C 0x00000000) PresentationCore.ni.dll
-0023:69A995CB (0x2AEF0BD4 0x00000000 0x014FBD6C 0x00000000) WindowsBase.ni.dll
-0023:69A9951B (0x00000001 0x00000000 0x05477270 0x00000000) WindowsBase.ni.dll
-0023:69A993A2 (0x00000001 0x00000000 0x2AEF0BBC 0x00000000) WindowsBase.ni.dll
-0023:69A992E4 (0x00000000 0x00000000 0x00000001 0x00000000) WindowsBase.ni.dll
-0023:69A978D1 (0x00000001 0x00000000 0x2AEF0BBC 0x00000000) WindowsBase.ni.dll
-0023:69A98DEE (0x014FBD6C 0x00000000 0x00000000 0x00000000) WindowsBase.ni.dll
+0023:1252019A (0x0075E520 0x00000000 0x00000000 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::Texture::LoadPSD()+0858 byte(s), c:\evrat\frontline\platform\resource\texture\base\texturetype\texturepsd.cpp, line 0094+0021 byte(s)
+0023:124D9D49 (0x0075E520 0x00000000 0x0075E500 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::Texture::Load()+0553 byte(s), c:\evrat\frontline\platform\resource\texture\base\texture.cpp, line 0488
+0023:124D9978 (0x0075E520 0x00000000 0x6E89BDF7 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::Texture::Load()+1224 byte(s), c:\evrat\frontline\platform\resource\texture\base\texture.cpp, line 0384
+0023:124C41BB (0x36126C80 0x00000000 0x0075E458 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::ResourceTexturePool::CreateInstance()+0107 byte(s), c:\evrat\frontline\platform\resource\resourcetexture.cpp, line 0044
+0023:124C49AB (0x0075E520 0x00000000 0x0075E490 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::ResourcePoolSingleKey<Code3::Resource::Texture,Code3::FileIO::Path>::CreateInstance()+0011 byte(s), c:\evrat\frontline\platform\resource\templates\resourcepoolsinglekey.h, line 0072
+0023:124C4F4D (0x0075E520 0x00000000 0x0075E490 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::ResourcePoolDoubleKey<Code3::Resource::Texture,Code3::FileIO::Path,int>::LoadInstance()+0093 byte(s), c:\evrat\frontline\platform\resource\templates\resourcepooldoublekey.h, line 0188+0011 byte(s)
+0023:124C4474 (0x00000000 0x00000000 0x161BCEB4 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::ResourceTexture::Load()+0228 byte(s), c:\evrat\frontline\platform\resource\resourcetexture.cpp, line 0119
 

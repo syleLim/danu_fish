@@ -43,15 +43,17 @@ class fish_moving(Actor.Actor):
 
 		#change_speed
 		self.fish_first_speed = 0.06
-		self.change_speed = None
-		self.change_level = 4
+		self.is_speed_up = False
+		self.is_speed_down = False
+		self.speed_count = 0
+		self.speed_factor = 0.02
 
 		#set Oculus
 		self.Oculus_right_Container = Container(0)
 		self.Oculus_left_Container = Container(0)
 		self.is_inter_action = True
 		self.pre_hand_pos = Math3d.Vector3()
-		self.is_hand_move = int()
+		self.is_hand_move = None
 		self.is_ob_hand_length = int()
 		
 		return
@@ -60,9 +62,22 @@ class fish_moving(Actor.Actor):
 
 	def OnCreate(self, this):
 		self.World = GetWorldContainer().FindComponentByType("World")
+		self.is_hand_move = 0.5
 		
+		if 1 == random.randrange(0, 2) :
+			a = -1
+		else : 
+			a = 1
+		if 1 == random.randrange(0, 2) :
+			b = -1
+		else : 
+			b = 1
+		if 1 == random.randrange(0, 2) :
+			c = -1
+		else : 
+			c = 1
 
-		self.direction  = self.Nor(Math3d.Vector3(random.random(), random.random(), random.random()))
+		self.direction  = self.Nor(Math3d.Vector3(a*random.random(), b*random.random(), c*random.random()))
 
 		self.Fish_ob = Container(this)
 		self.Fish_Head_2 = self.Fish_ob.GetChild(0)
@@ -100,6 +115,9 @@ class fish_moving(Actor.Actor):
 		#oculus Script save
 		self.oculus_right_hand_pos = self.Oculus_right_Container.FindComponentByType("TransformGroup")
 		self.oculus_left_hand_pos = self.Oculus_left_Container.FindComponentByType("TransformGroup")
+		self.pre_hand_pos_right = self.oculus_right_hand_pos.GetPosition()
+		self.pre_hand_pos_left = self.oculus_left_hand_pos.GetPosition()
+		self.hand_count = 0
 
 		#first in data
 		self.pre_rot = self.Fish_ob_transform.GetRotation()
@@ -112,10 +130,26 @@ class fish_moving(Actor.Actor):
 
 
 	def Update(self):
+		
+		if self.hand_count%10 == 0 :
+			self.pre_hand_pos_right = self.oculus_right_hand_pos.GetPosition()
+			self.pre_hand_pos_left = self.oculus_left_hand_pos.GetPosition()
+		
+		self.hand_count +=1
+
+
+		if self.is_speed_up :
+			self.Go_fast()
+
+		if self.is_speed_down :
+			self.Go_slow()
+
+		
+
 		self.check_out(self.Fish_ob_transform)
 
-		self.Check_hand(self.oculus_right_hand_pos)
-		self.Check_hand(self.oculus_left_hand_pos)
+		self.Check_hand(self.oculus_right_hand_pos, self.pre_hand_pos_right)
+		self.Check_hand(self.oculus_left_hand_pos, self.pre_hand_pos_left)
 
 		#error _ wall active -> check_hand is no work
 		self.Check_Wall(self.wall_x, 'x')
@@ -135,7 +169,7 @@ class fish_moving(Actor.Actor):
 			else :
 				self.Fish_turn(self.turn_degree)
 
-				if self.turn_count >150 :
+				if self.turn_count >200 :
 					self.turn_count = 0
 					self.is_Turn = False
 					self.is_ground_turn = False
@@ -147,13 +181,17 @@ class fish_moving(Actor.Actor):
 
 
 	def Fish_go_ahead(self, speed, direction):
-
+		#print(self.fish_speed)
 		self._time += self.World.GetFrameElapseTime()*self.fish_speed*60
 
 		pre_position = self.Fish_ob_transform.GetPosition()
 
 		#anytime initialize
-		direction = self.Nor(direction)
+		if direction.Length() == 0 :
+			pass
+		else :
+			direction = self.Nor(direction)	
+		
 
 		#Stardard position
 		pre_position_head_2 =  Math3d.Vector4(1.5, 0, 0, 0)
@@ -169,7 +207,7 @@ class fish_moving(Actor.Actor):
 		#local moveing algorithm
 		#Set angle(20, 40), transform matrix
 		transform_1 = Math3d.Matrix(1,0,0,0.75,0, 1, 0, 0, 0, 0, 1,0, 0,0,0,1)
-		rotate_head_2 = Math3d.Matrix(math.cos(math.pi*(math.sin(self._time)*(-15)/180)), 0, math.sin(math.pi*(math.sin(self._time)*(-15)/180)), 0, 0,1,0,0, -math.sin(math.pi*(math.sin(self._time)*(-15)/180)), 0, math.cos(math.pi*(math.sin(self._time)*(-15)/180)), 0, 0,0,0,1)
+		rotate_head_2 = Math3d.Matrix(math.cos(math.pi*(math.sin(self._time)*(-10)/180)), 0, math.sin(math.pi*(math.sin(self._time)*(-10)/180)), 0, 0,1,0,0, -math.sin(math.pi*(math.sin(self._time)*(-10)/180)), 0, math.cos(math.pi*(math.sin(self._time)*(-15)/180)), 0, 0,0,0,1)
 		re_transform_1 = Math3d.Matrix(1,0,0, -0.75, 0, 1, 0, 0, 0, 0, 1,0, 0,0,0,1)
 
 		rotate_head_1 = Math3d.Matrix(math.cos(math.pi*(math.sin(self._time)*(-7.5)/180)), 0, math.sin(math.pi*(math.sin(self._time)*(-7.5)/180)), 0, 0,1,0,0, -math.sin(math.pi*(math.sin(self._time)*(-7.5)/180)), 0, math.cos(math.pi*(math.sin(self._time)*(-7.5)/180)), 0, 0,0,0,1)
@@ -282,12 +320,18 @@ class fish_moving(Actor.Actor):
 		
 		next_position = pre_position + (direction*speed)
 
-		self.Fish_ob_transform.SetRotation(q)
+		
 		#print(q___.__str__())
 		#print(self.Fish_ob_transform.GetRotation())
 
 		self.Fish_ob_transform.SetPosition(next_position)
 
+
+		x = q
+		y = Math3d.Quaternion.QuaternionToEulerDegreeFloat(x)
+		y.x = 0
+		z = Math3d.Quaternion.EulerDegreeToQuaternionFloat(y)
+		self.Fish_ob_transform.SetRotation(z)
 	
 
 
@@ -388,12 +432,6 @@ class fish_moving(Actor.Actor):
 		self.Fish_Back_5_transform.SetLocalRotation(quat_back_5)
 
 
-
-		
-
-
-
-
 		#moving postion _set1
 		#self.pre_direction  = self.direction
 
@@ -412,12 +450,18 @@ class fish_moving(Actor.Actor):
 
 		q = self.CalQuaternion(Math3d.Vector3(1, 0, 0), self.direction)
 
-		next_position = pre_position + (self.Nor(self.direction)*self.turn_speed)
+		next_position = pre_position + (self.Nor(self.direction)*self.fish_speed)
 	
 		#set position to axis point and play and ----
 
-		self.Fish_ob_transform.SetRotation(q)
-		self.Fish_ob_transform.SetPosition(next_position);
+		
+		self.Fish_ob_transform.SetPosition(next_position)
+
+		x = q
+		y = Math3d.Quaternion.QuaternionToEulerDegreeFloat(x)
+		y.x = 0
+		z = Math3d.Quaternion.EulerDegreeToQuaternionFloat(y)
+		self.Fish_ob_transform.SetRotation(z)
 
 		self.turn_count +=1
 
@@ -469,7 +513,7 @@ class fish_moving(Actor.Actor):
 						self.turn_direction = self.Nor(Math3d.Vector3(-self.direction.x, self.direction.y, self.direction.z))
 					
 					self.pre_direction = self.direction
-					self.d = (self.turn_direction - self.pre_direction)/50
+					self.d = (self.turn_direction - self.pre_direction)/70
 					
 					self.is_wall_turn = True
 					self.turn_count = 0
@@ -486,7 +530,7 @@ class fish_moving(Actor.Actor):
 						self.turn_direction = self.Nor(Math3d.Vector3(self.direction.x, self.direction.y, -self.direction.z))
 					
 					self.pre_direction = self.direction
-					self.d = (self.turn_direction - self.pre_direction)/50
+					self.d = (self.turn_direction - self.pre_direction)/70
 					
 					self.is_wall_turn = True
 					self.is_ground_turn = False
@@ -495,7 +539,7 @@ class fish_moving(Actor.Actor):
 
 
 
-	def Check_hand(self, ouclus_tranform):
+	def Check_hand(self, ouclus_tranform, pre_pos):
 
 		hand_pos = ouclus_tranform.GetPosition()
 		ob_pos = self.Fish_ob_transform.GetPosition()
@@ -503,24 +547,25 @@ class fish_moving(Actor.Actor):
 		if (hand_pos - ob_pos).Length() > self.is_ob_hand_length :
 			return
 
-		if (hand_pos-self.pre_hand_pos).Length() < self.is_hand_move :
-			self.pre_hand_pos = hand_pos
+		if (hand_pos-pre_pos).Length() < self.is_hand_move :
+			#self.pre_hand_pos = hand_pos
 
 			return
 		
 		else :
-			speed_factor = (hand_pos-ob_pos).Length()
+			var = (hand_pos-pre_pos).Length()
 
-			if speed_factor < self.change_level :
-				self.change_speed = self.fish_speed + 0.3
+			if self.is_speed_up == False and self.is_speed_down == False:
+				self.speed_factor = 0.01/var
+				self.is_speed_up = True
 
 
-			self.pre_hand_pos = hand_pos
-			self.turn_direction = (ob_pos - (hand_pos+self.pre_hand_pos)/2)
+			#self.pre_hand_pos = hand_pos
+			self.turn_direction = (ob_pos - (hand_pos+pre_pos)/2)
 			self.turn_direction = self.Nor(self.turn_direction)
 			
 			self.pre_direction = self.direction
-			self.d = (self.turn_direction - self.pre_direction)/100
+			self.d = (self.turn_direction - self.pre_direction)/20
 			
 			self.is_wall_turn = False
 			self.is_ground_turn = False
@@ -530,20 +575,39 @@ class fish_moving(Actor.Actor):
 			return
 
 
-	def Change_Speed(self, change_speed, label) :
-		if label > 0 :
-			if self.fish_speed < change_speed :
-				self.fish_speed += 0.03
-			else :
-				self.fish_speed = change_speed
-				return
-		if label < 0 :
-			if self.fish_speed > change_speed :
-				self.fish_speed -= 0.03
-			else : 
-				self.fish_speed = change_speed
-				return
+	def Go_fast (self) :
+		#print("fast")
+		#print(self.fish_speed)
+		self.speed_count +=1
 
+		if self.speed_count > 30 :
+			self.speed_count = 0
+			self.is_speed_up = False
+			self.is_speed_down = True
+		#	print("fast_end")
+
+			return
+
+		self.fish_speed += self.speed_factor/self.speed_count
+
+
+		
+
+
+	def Go_slow(self) :
+		#print("slow")
+		#print(self.fish_speed)
+		self.speed_count +=1
+
+		if self.fish_speed < 0.06 :
+			self.fish_speed = 0.06
+			self.speed_count = 0
+			self.is_speed_down = False
+		#	print("slow_end")
+
+			return
+
+		self.fish_speed -= self.speed_factor/self.speed_count
 
 
 
@@ -627,14 +691,14 @@ class fish_moving(Actor.Actor):
 		else :
 				b = 1
 
-		if 30 < abs(ob_pos.x) or 30 < abs(ob_pos.z) :
+		if 35 < abs(ob_pos.x) or 35 < abs(ob_pos.z) :
 
 			ob_pos = Math3d.Vector3(0,0,0)
 			self.direction = self.Nor(Math3d.Vector3(random.random()*a+a, random.random(), random.random()*b+b))
 			self.Fish_ob_transform.SetPosition(ob_pos)
 
 
-		if 10 < abs(ob_pos.y)+2 :
+		if 33 < ob_pos.y or ob_pos.y < -11:
 			ob_pos = Math3d.Vector3(0,0,0)
 			self.direction = self.Nor(Math3d.Vector3(random.random()*a+a, random.random(), random.random()*b+b))
 			self.Fish_ob_transform.SetPosition(ob_pos)

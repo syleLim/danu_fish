@@ -1,5 +1,5 @@
 class oculus(Actor.Actor):
-	def __init__(self):
+        def __init__(self):
 		self.head = Container(0)
 		self.rightHand = Container(0)
 		self.leftHand = Container(0)
@@ -28,34 +28,34 @@ class oculus(Actor.Actor):
 		hmd_rot = DeviceInput.GetHMDOrientation("Oculus", False)
 		hmd_pos = DeviceInput.GetHMDPosition("Oculus", False)
 		input_time = DeviceInput.GetInputTime("Oculus")
-        button_info = DeviceInput.GetInputInfo("Oculus", 0)
-        touch_info = DeviceInput.GetInputInfo("Oculus", 1)
-        controller_type = DeviceInput.GetControllerType("Oculus")
+                button_info = DeviceInput.GetInputInfo("Oculus", 0)
+                touch_info = DeviceInput.GetInputInfo("Oculus", 1)
+                controller_type = DeviceInput.GetControllerType("Oculus")
 
-        #hand setting
-        self.left_pos = None
-        self.right_pos = None
+                #hand setting
+                self.left_pos = None
+                self.right_pos = None
 
-        #using with hand
-        cam_position = head_transform.GetPosition()
+                #using with hand
+                cam_position = head_transform.GetPosition()
 
 
-        # 0 = left 1 = right
-        for i in range(0, 2):
-        	hand = i+1
+                # 0 = left 1 = right
+                for i in range(0, 2):
+                        hand = i+1
 
-        	hand_status = DeviceInput.GetHandStatus("Oculus", hand)
+                        hand_status = DeviceInput.GetHandStatus("Oculus", hand)
 
-        	if(hand_status > 0):
-        		hand_rot = DeviceInput.GetHandOrientation("Oculus", hand)
-        		hand_pos = DeviceInput.GetHandPosition("Oculus", hand)
+                        if(hand_status > 0):
+                                hand_rot = DeviceInput.GetHandOrientation("Oculus", hand)
+                                hand_pos = DeviceInput.GetHandPosition("Oculus", hand)
 
-        		#I don`t konw what they are below
-                hand_trigger = DeviceInput.GetTrigger("Oculus", hand, False, 0)
-                index_trigger = DeviceInput.GetTrigger("Oculus", hand, False, 1)
-                t_stick = DeviceInput.GetThumbStick("Oculus", hand, False);
+        		      #I don`t konw what they are below
+                        hand_trigger = DeviceInput.GetTrigger("Oculus", hand, False, 0)
+                        index_trigger = DeviceInput.GetTrigger("Oculus", hand, False, 1)
+                        t_stick = DeviceInput.GetThumbStick("Oculus", hand, False);
 
-                if i == 0:
+                        if i == 0:
                 	left_pos = hand_pos
                 	print("Left : "+str(hand_pos))
                 else :
