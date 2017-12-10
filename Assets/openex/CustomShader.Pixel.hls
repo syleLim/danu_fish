@@ -1,0 +1,60 @@
+// ※ fileName 뒤에 ".Pixel.hls" 확장자 사용.
+
+// ※ cbuffer SHADER_EXTERN 범위 밖에는 Texture 외에 다른 cbuffer 선언 시 인식 불가. ("cbuffer SHADER_EXTERN" 이름 고정)
+// ※ cbuffer SHADER_EXTERN 내에 주석 불가
+
+cbuffer SHADER_EXTERN
+{
+	int Mode;
+	float3 Color;
+	float ColorRate;
+	float3 Float3Array[2];
+};
+
+
+
+// ※ Vertex Shader의 Output("VS_OUTPUT")과 동일한 자료구조 ( float4 Position 생략 불가 )
+
+struct PS_INPUT
+{
+	float4 Position : POSITION;
+	float2 UV : TEXCOORD;
+	float4 Diffuse : COLOR;
+};
+
+
+
+// ※ Texture Register Support ( 0 ~ 15 )
+
+Texture2D TextureDiffuse : register(t0);
+SamplerState TextureDiffuseSampler : register(s0);
+
+
+
+// ※ 진입점 이름은 "PS" 고정
+
+float4 PS(PS_INPUT Input) : SV_Target
+{
+	if (Mode == 0) // Use Texture
+	{
+		return TextureDiffuse.Sample(TextureDiffuseSampler, Input.UV);
+	}
+	else if (Mode == 1) // Use Vertex Diffuse
+	{
+		return Input.Diffuse;
+	}
+	else if (Mode == 2) // Use Blend Texture & Color
+	{
+		return float4(Color * ColorRate + TextureDiffuse.Sample(TextureDiffuseSampler, Input.UV).rgb * (1.0 - ColorRate), 1.0);
+	}
+	else if (Mode == 3) // Test Output
+	{
+		return float4(Float3Array[0], 0);
+	}
+	else if (Mode == 4) // Test Output
+	{
+		return float4(Float3Array[1], 0);
+	}
+
+	return float4(1.0, 0.0, 0.0, 1.0); // Red
+}

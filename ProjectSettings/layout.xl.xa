@@ -4,23 +4,23 @@
     <LayoutPanel Orientation="Horizontal">
       <LayoutAnchorablePaneGroup Orientation="Vertical" DockWidth="170.4" FloatingWidth="210" FloatingHeight="603" FloatingLeft="2064" FloatingTop="467">
         <LayoutAnchorablePane Id="cddd4727-c05b-435f-829d-d358fe67bdbf" DockWidth="170.4" FloatingWidth="210" FloatingHeight="603" FloatingLeft="2064" FloatingTop="467">
-          <LayoutAnchorable AutoHideWidth="100" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="MultiHierarchyView" IsSelected="True" ContentId="VRCAT.HierarchyModule.MultiHierarchyView, VRCAT.HierarchyModule" FloatingLeft="1064" FloatingTop="467" FloatingWidth="210" FloatingHeight="603" LastActivationTimeStamp="12/04/2017 16:25:11" />
+          <LayoutAnchorable AutoHideWidth="100" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="MultiHierarchyView" IsSelected="True" ContentId="VRCAT.HierarchyModule.MultiHierarchyView, VRCAT.HierarchyModule" FloatingLeft="1064" FloatingTop="467" FloatingWidth="210" FloatingHeight="603" LastActivationTimeStamp="12/10/2017 00:27:24" />
         </LayoutAnchorablePane>
       </LayoutAnchorablePaneGroup>
       <LayoutPanel Orientation="Horizontal">
         <LayoutDocumentPaneGroup Orientation="Horizontal">
           <LayoutDocumentPane Id="050bcc05-718a-40ec-a3cd-8c69966e1f54" DockWidth="1.82293024141001*">
-            <LayoutAnchorable AutoHideWidth="100" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Scene" IsSelected="True" ContentId="VRCAT.RenderingModule.RenderView, VRCAT.RenderingModule" FloatingLeft="824" FloatingTop="417" FloatingWidth="533" FloatingHeight="301" LastActivationTimeStamp="12/04/2017 16:24:59" />
+            <LayoutAnchorable AutoHideWidth="100" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Scene" IsSelected="True" IsLastFocusedDocument="True" ContentId="VRCAT.RenderingModule.RenderView, VRCAT.RenderingModule" FloatingLeft="824" FloatingTop="417" FloatingWidth="533" FloatingHeight="301" LastActivationTimeStamp="12/10/2017 00:28:52" />
           </LayoutDocumentPane>
           <LayoutDocumentPane DockWidth="0.677069758589991*">
-            <LayoutAnchorable AutoHideWidth="100" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Inspector" IsSelected="True" IsLastFocusedDocument="True" ContentId="VRCAT.InspectorModule.InspectorView, VRCAT.InspectorModule" FloatingLeft="801.6" FloatingTop="346.4" FloatingWidth="136" FloatingHeight="732" LastActivationTimeStamp="12/04/2017 16:24:59" />
+            <LayoutAnchorable AutoHideWidth="100" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Inspector" IsSelected="True" ContentId="VRCAT.InspectorModule.InspectorView, VRCAT.InspectorModule" FloatingLeft="801.6" FloatingTop="346.4" FloatingWidth="136" FloatingHeight="732" LastActivationTimeStamp="12/10/2017 00:27:25" />
           </LayoutDocumentPane>
         </LayoutDocumentPaneGroup>
       </LayoutPanel>
     </LayoutPanel>
     <LayoutAnchorablePaneGroup Orientation="Horizontal" DockWidth="1.5*" DockHeight="189.1" FloatingWidth="992.8" FloatingHeight="667.2" FloatingLeft="155.2" FloatingTop="796">
       <LayoutAnchorablePane DockWidth="1.5*" DockHeight="189.1" FloatingWidth="992.8" FloatingHeight="667.2" FloatingLeft="155.2" FloatingTop="796">
-        <LayoutAnchorable AutoHideWidth="100" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Project" IsSelected="True" ContentId="VRCAT.AssetModule.AssetView, VRCAT.AssetModule" FloatingLeft="155.2" FloatingTop="796" FloatingWidth="992.8" FloatingHeight="667.2" LastActivationTimeStamp="12/04/2017 14:18:26" />
+        <LayoutAnchorable AutoHideWidth="100" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Project" IsSelected="True" ContentId="VRCAT.AssetModule.AssetView, VRCAT.AssetModule" FloatingLeft="155.2" FloatingTop="796" FloatingWidth="992.8" FloatingHeight="667.2" LastActivationTimeStamp="12/09/2017 22:30:09" />
       </LayoutAnchorablePane>
     </LayoutAnchorablePaneGroup>
   </RootPanel>

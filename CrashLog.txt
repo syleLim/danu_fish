@@ -1,17 +1,12 @@
 Crash Information : 
-Danuri-VR.exe caused an EXCEPTION_ACCESS_VIOLATION in module VRCAT.Wrapper.dll at 0023:1252019A, Code3::Resource::Texture::LoadPSD()+0858 byte(s), c:\evrat\frontline\platform\resource\texture\base\texturetype\texturepsd.cpp, line 0094+0021 byte(s)
+Danuri-VR.exe caused an EXCEPTION_ACCESS_VIOLATION in module VRCAT.Wrapper.dll at 0023:52E995C8, Code3::Scene::GizmoHandler::SetPosition()+0200 byte(s), c:\evrat\frontline\platform\object\gizmo\gizmohandler.cpp, line 0307+0009 byte(s)
 
 Register Information : 
-EAX=2CAAC020  EBX=00000000  ECX=1DCE70A0  EDX=FFFFF8F0  ESI=FFFFFF8F
-EDI=2C63F020  EBP=0075E324  ESP=0075DE00  EIP=1252019A  FLG=00210287
+EAX=00000000  EBX=00000000  ECX=0FA8CF90  EDX=008720F8  ESI=0FA8CFB0
+EDI=00000000  EBP=009DE6A8  ESP=009DE678  EIP=52E995C8  FLG=00210246
 CS=0023   DS=002B  SS=002B  ES=002B   FS=0053  GS=002B
 
 Stack Trace : 
-0023:1252019A (0x0075E520 0x00000000 0x00000000 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::Texture::LoadPSD()+0858 byte(s), c:\evrat\frontline\platform\resource\texture\base\texturetype\texturepsd.cpp, line 0094+0021 byte(s)
-0023:124D9D49 (0x0075E520 0x00000000 0x0075E500 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::Texture::Load()+0553 byte(s), c:\evrat\frontline\platform\resource\texture\base\texture.cpp, line 0488
-0023:124D9978 (0x0075E520 0x00000000 0x6E89BDF7 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::Texture::Load()+1224 byte(s), c:\evrat\frontline\platform\resource\texture\base\texture.cpp, line 0384
-0023:124C41BB (0x36126C80 0x00000000 0x0075E458 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::ResourceTexturePool::CreateInstance()+0107 byte(s), c:\evrat\frontline\platform\resource\resourcetexture.cpp, line 0044
-0023:124C49AB (0x0075E520 0x00000000 0x0075E490 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::ResourcePoolSingleKey<Code3::Resource::Texture,Code3::FileIO::Path>::CreateInstance()+0011 byte(s), c:\evrat\frontline\platform\resource\templates\resourcepoolsinglekey.h, line 0072
-0023:124C4F4D (0x0075E520 0x00000000 0x0075E490 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::ResourcePoolDoubleKey<Code3::Resource::Texture,Code3::FileIO::Path,int>::LoadInstance()+0093 byte(s), c:\evrat\frontline\platform\resource\templates\resourcepooldoublekey.h, line 0188+0011 byte(s)
-0023:124C4474 (0x00000000 0x00000000 0x161BCEB4 0x00000000) VRCAT.Wrapper.dll, Code3::Resource::ResourceTexture::Load()+0228 byte(s), c:\evrat\frontline\platform\resource\resourcetexture.cpp, line 0119
+0023:52E995C8 (0x00000000 0x00000000 0x00000000 0x00000000) VRCAT.Wrapper.dll, Code3::Scene::GizmoHandler::SetPosition()+0200 byte(s), c:\evrat\frontline\platform\object\gizmo\gizmohandler.cpp, line 0307+0009 byte(s)
+0023:52EA0807 (0x000001E5 0x00000000 0x00000100 0x00000000) VRCAT.Wrapper.dll, Code3::Renderer::RenderWindowDX::GizmoMouseDrag()+0327 byte(s), c:\evrat\frontline\platform\renderer\dx\renderwindowdx.cpp, line 0252
 
